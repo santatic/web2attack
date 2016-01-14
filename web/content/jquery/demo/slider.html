@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Slider - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="demo.css">
+	<script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+</head>
+<body>
+	<h2>Slider</h2>
+	<div class="demo-info">
+		<div class="demo-tip icon-tip"></div>
+		<div>Drag the slider to change the font size.</div>
+	</div>
+	
+	<div style="margin-top:20px;">
+		<input id="ss" class="easyui-slider" value="12" style="width:300px" data-options="
+				showTip:true,
+				rule: [0,'|',25,'|',50,'|',75,'|',100],
+				tipFormatter: function(value){
+					return value+'px';
+				},
+				onChange: function(value){
+					$('#ff').css('font-size', value);
+				}">
+	</div>
+	<div id="ff" style="margin-top:50px;font-size:12px">jQuery EasyUI</div>
+</body>
+</html>

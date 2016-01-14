@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Form - jQuery EasyUI Demo</title>
+	<style type="text/css">
+		label{
+			width:120px;
+			display:block;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="demo.css">
+	<script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+	<script type="text/javascript">
+		function loaddata1(){
+			$('#ff').form('load','form_data.json');
+		}
+		function loaddata2(){
+			$('#ff').form('load',{
+				name:'name2',
+				email:'mymail@gmail.com',
+				subject:'subject2',
+				message:'message2',
+				language:5
+			});
+		}
+		function cleardata(){
+			$('#ff').form('clear');
+		}
+	</script>
+</head>
+<body>
+	<h2>Form Demo</h2>
+	<div class="demo-info">
+		<div class="demo-tip icon-tip"></div>
+		<div>Click below button to load or clear the form data.</div>
+	</div>
+	
+	<div style="margin:10px 0;">
+		<a href="#" class="easyui-linkbutton" onclick="loaddata1()">Load1</a> 
+		<a href="#" class="easyui-linkbutton" onclick="loaddata2()">Load2</a> 
+		<a href="#" class="easyui-linkbutton" onclick="cleardata()">Clear</a> 
+	</div>
+	<div style="background:#fafafa;padding:10px;width:300px;height:300px;">
+	    <form id="ff" method="post" novalidate>
+	        <div>
+	            <label for="name">Name:</label>
+	            <input class="easyui-validatebox" type="text" name="name" data-options="required:true"></input>
+	        </div>
+	        <div>
+	            <label for="email">Email:</label>
+	            <input class="easyui-validatebox" type="text" name="email" data-options="validType:'email'"></input>
+	        </div>
+	        <div>
+	            <label for="subject">Subject:</label>
+	            <input class="easyui-validatebox" type="text" name="subject"></input>
+	        </div>
+	        <div>
+	            <label for="message">Message:</label>
+	            <textarea name="message" style="height:60px;"></textarea>
+	        </div>
+	        <div>
+	            <label for="language">Language:</label>
+				<input class="easyui-combobox" name="language"
+						data-options="
+								url:'combobox_data.json',
+								valueField:'id',
+								textField:'text',
+								panelHeight:'auto'
+						">
+	        </div>
+	        <div>
+	            <input type="submit" value="Submit">
+	        </div>
+	    </form>
+	</div>
+	
+</body>
+</html>

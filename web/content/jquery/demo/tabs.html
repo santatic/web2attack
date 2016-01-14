@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Tabs - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="demo.css">
+	<script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+	<script type="text/javascript">
+		var index = 0;
+		function addTab(){
+			index++;
+			$('#tt').tabs('add',{
+				title:'New Tab ' + index,
+				content:'Tab Body ' + index,
+				iconCls:'icon-save',
+				closable:true,
+				tools:[{
+					iconCls:'icon-mini-refresh',
+					handler:function(){
+						alert('refresh');
+					}
+				}]
+			});
+		}
+		function getSelected(){
+			var tab = $('#tt').tabs('getSelected');
+			alert('Selected: '+tab.panel('options').title);
+		}
+		function update(){
+			index++;
+			var tab = $('#tt').tabs('getSelected');
+			$('#tt').tabs('update', {
+				tab: tab,
+				options:{
+					title:'new title'+index,
+					iconCls:'icon-save'
+				}
+			});
+		}
+	</script>
+</head>
+<body>
+	<h2>Tabs</h2>
+	<div class="demo-info">
+		<div class="demo-tip icon-tip"></div>
+		<div>Tabs are automatically made scrollable when the sum of their width exceeds their container width size.</div>
+	</div>
+	
+	<div style="margin:10px 0">
+		<a class="easyui-linkbutton" data-options="iconCls:'icon-add'" href="javascript:void(0)" onclick="addTab()">add tab</a>
+		<a class="easyui-linkbutton" href="javascript:void(0)" onclick="getSelected()">getSelected</a>
+		<a class="easyui-linkbutton" href="javascript:void(0)" onclick="update()">Update</a>
+	</div>
+	
+	<div id="tt" class="easyui-tabs" data-options="tools:'#tab-tools'" style="width:700px;height:250px;">
+		<div title="Tab1" data-options="tools:'#p-tools'" style="padding:20px;">
+		</div>
+		<div title="Tab2" data-options="closable:true,cache:false,href:'tabs_href_test.html'" style="padding:20px;">
+			This is Tab2 with close button.
+		</div>
+		<div title="Tab3" data-options="iconCls:'icon-reload',closable:true" style="padding:20px;">
+			<table id="test" class="easyui-datagrid" data-options="fit:true">
+				<thead>
+					<tr>
+						<th data-options="field:'f1',width:60">field1</th>
+						<th data-options="field:'f2',width:60">field2</th>
+						<th data-options="field:'f3',width:60">field3</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>d1</td>
+						<td>d2</td>
+						<td>d3</td>
+					</tr>
+					<tr>
+						<td>d11</td>
+						<td>d21</td>
+						<td>d31</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div title="Tab4 with iframe" data-options="closable:true" style="overflow:hidden">
+			<iframe scrolling="yes" frameborder="0"  src="http://www.jeasyui.com/forum/index.php" style="width:100%;height:100%;"></iframe>
+		</div>
+		<div title="Tab5 with sub tabs" data-options="closable:true,iconCls:'icon-cut'" style="padding:10px;">
+			<div class="easyui-tabs" data-options="fit:true,plain:true">
+				<div title="Title1" style="padding:10px;">Content 1</div>
+				<div title="Title2" style="padding:10px;">Content 2</div>
+				<div title="Title3" style="padding:10px;">Content 3</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="tab-tools">
+		<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'" onclick="javascript:alert('add')"></a>
+		<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-save'" onclick="javascript:alert('save')"></a>
+	</div>
+	<div id="p-tools">
+		<a href="#" class="icon-mini-add" onclick="alert('add')"></a>
+		<a href="#" class="icon-mini-edit" onclick="alert('edit')"></a>
+		<a href="#" class="icon-mini-refresh" onclick="alert('refresh')"></a>
+	</div>
+</body>
+</html>

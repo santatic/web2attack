@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Draggable - jQuery EasyUI demo</title>
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="demo.css">
+	<style type="text/css">
+		.cc{
+			position:relative;
+			overflow:auto;
+			width:400px;
+			height:200px;
+			background:#fafafa;
+			border:1px solid #ccc;
+		}
+		#dd1{
+			margin:0px;
+			width:100px;
+			height:100px;
+			background:#fff;
+			border:1px solid #ccc;
+		}
+		#dd2{
+			width:100px;
+			height:100px;
+			background:#fafafa;
+			border:1px solid #ccc;
+			position:absolute;
+			left:600px;
+			top:200px;
+		}
+		#dd3{
+			width:100px;
+			height:100px;
+			background:red;
+			position:absolute;
+			left:450px;
+			top:200px;
+		}
+	</style>
+	<script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+</head>
+<body>
+	<h2>Draggable</h2>
+	<div class="demo-info">
+		<div class="demo-tip icon-tip"></div>
+		<div>
+			Move below box by clicking on it with mouse.
+		</div>
+	</div>
+	<div style="margin:10px 0"></div>
+	
+	<div class="cc">
+		<div id="dd1" class="easyui-draggable">
+			<a href="#" onclick="javascript:$('#dd1').draggable('enable')">Start Drag</a><br/>
+			<a href="#" onclick="javascript:$('#dd1').draggable('disable')">Stop Drag</a>
+		</div>
+	</div>
+	<div id="dd2" class="easyui-draggable" data-options="handle:'#title'">
+		<div id="title" style="padding:5px;background:#ccc;">Title</div>
+	</div>
+	<div id="dd3" class="easyui-draggable"></div>
+</body>
+</html>

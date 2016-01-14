@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>jQuery EasyUI</title>
+	<script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+	<style type="text/css">
+		.drag{
+			width:100px;
+			height:50px;
+			padding:10px;
+			margin:5px;
+			border:1px solid #ccc;
+			background:#AACCFF;
+		}
+		.dp{
+			opacity:0.5;
+			filter:alpha(opacity=50);
+		}
+		.over{
+			background:#FBEC88;
+		}
+	</style>
+	<script>
+		$(function(){
+			$('.drag').draggable({
+				proxy:'clone',
+				revert:true,
+				cursor:'auto',
+				onStartDrag:function(){
+					$(this).draggable('options').cursor='not-allowed';
+					$(this).draggable('proxy').addClass('dp');
+				},
+				onStopDrag:function(){
+					$(this).draggable('options').cursor='auto';
+				}
+			});
+			$('#target').droppable({
+				accept:'#d1,#d3',
+				onDragEnter:function(e,source){
+					$(source).draggable('options').cursor='auto';
+					$(source).draggable('proxy').css('border','1px solid red');
+					$(this).addClass('over');
+				},
+				onDragLeave:function(e,source){
+					$(source).draggable('options').cursor='not-allowed';
+					$(source).draggable('proxy').css('border','1px solid #ccc');
+					$(this).removeClass('over');
+				},
+				onDrop:function(e,source){
+					$(this).append(source)
+					$(this).removeClass('over');
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<h1>DragDrop</h1>
+	<div id="source" style="border:1px solid #ccc;width:300px;height:400px;float:left;margin:5px;">
+		drag me!
+		<div id="d1" class="drag">Drag 1</div>
+		<div id="d2" class="drag">Drag 2</div>
+		<div id="d3" class="drag">Drag 3</div>
+	</div>
+	<div id="target" style="border:1px solid #ccc;width:300px;height:400px;float:left;margin:5px;">
+		drop here!
+	</div>
+</body>
+</html>

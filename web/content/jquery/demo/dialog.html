@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Dialog - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="demo.css">
+	<script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+	<script>
+		$(function(){
+			$('#dd').dialog({
+				toolbar:[{
+					text:'Add',
+					iconCls:'icon-add',
+					handler:function(){
+						alert('add')
+					}
+				},'-',{
+					text:'Save',
+					iconCls:'icon-save',
+					handler:function(){
+						alert('save')
+					}
+				}],
+				buttons:[{
+					text:'Ok',
+					iconCls:'icon-ok',
+					handler:function(){
+						alert('ok');
+					}
+				},{
+					text:'Cancel',
+					handler:function(){
+						$('#dd').dialog('close');
+					}
+				}]
+			});
+		});
+		function open1(){
+			$('#dd').dialog('open');
+		}
+		function close1(){
+			$('#dd').dialog('close');
+		}
+	</script>
+</head>
+<body>
+	<h2>Dialog</h2>
+	<div class="demo-info">
+		<div class="demo-tip icon-tip"></div>
+		<div>Click below button to open or close dialog.</div>
+	</div>
+	
+	<div style="margin:10px 0;">
+		<a href="#" class="easyui-linkbutton" onclick="open1()">Open</a>
+		<a href="#" class="easyui-linkbutton" onclick="close1()">Close</a>
+	</div>
+	<div id="dd" data-options="iconCls:'icon-save'" style="padding:5px;width:400px;height:200px;">
+		<p>dialog content.</p>
+		<p>dialog content.</p>
+		<p>dialog content.</p>
+		<p>dialog content.</p>
+		<p>dialog content.</p>
+		<p>dialog content.</p>
+		<p>dialog content.</p>
+		<p>dialog content.</p>
+	</div>
+	<div id="d2" class="easyui-dialog" title="Another Dialog" style="width:400px;height:200px;left:100px;top:150px;padding:10px"
+			data-options="toolbar:'#dlg-toolbar',buttons:'#dlg-buttons',resizable:true">
+		Dialog toolbar and buttons are created from existing HTML nodes.
+	</div>
+	<div id="dlg-toolbar" style="padding:2px 0">
+		<table cellpadding="0" cellspacing="0" style="width:100%">
+			<tr>
+				<td style="padding-left:2px">
+					<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">Edit</a>
+					<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-help',plain:true">Help</a>
+				</td>
+				<td style="text-align:right;padding-right:2px">
+					<input class="easyui-searchbox"></input>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="dlg-buttons">
+		<a href="#" class="easyui-linkbutton" onclick="javascript:alert('save')">Save</a>
+		<a href="#" class="easyui-linkbutton" onclick="javascript:$('#d2').dialog('close')">Close</a>
+	</div>
+</body>
+</html>

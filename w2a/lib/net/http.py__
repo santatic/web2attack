@@ -1,0 +1,134 @@
+# -*- coding: utf-8 -*-
+
+from w2a.lib.user_agent import User_Agent, Bot_User_Agent
+from w2a.config import CONFIG
+from w2a.core.printer import print_error
+
+from gzip import GzipFile
+from io import BytesIO
+from urllib import request, parse
+from http.client import HTTPConnection, HTTPSConnection
+from socket import setdefaulttimeout, timeout
+from base64 import b64encode
+from re import search
+
+class HTTP:
+	def __init__(self, host, timeout = CONFIG.TIME_OUT, proxy = CONFIG.PROXY, user_agents_type = ''):
+		self.timeout 		= timeout
+		self.proxy			= proxy
+		self.headers		= {}
+		self.storecookie	= False
+		self.redirect		= True				#flag redirect when check found Location in header
+		self.rand_useragent	= True				#random useragents flag
+
+		if user_agents_type == 'bot':
+			self.user_agents 	= Bot_User_Agent()
+		else:
+			self.user_agents 	= User_Agent()
+
+		self.user_agent	= self.user_agents.user_agent
+		# HTTPConnection.debuglevel	= 10
+		######################################
+		https	= False
+		if self.proxy != None:
+			host	= proxy
+		if host.startswith('http'):
+			parser		= parse.urlparse(host)
+			self.host	= parser.hostname
+			self.port 	= parser.port
+			if self.port == None:
+				if parser.scheme == 'https':
+					self.port	= 443
+				else:
+					self.port	= 80
+			if parser.scheme == 'https':
+				https	= True
+			
+			_user 	= parser.username if parser.username else ''
+			_pass	= parser.password if parser.password else ''
+			_login	= str(_user) + ':' + str(_pass)
+		else:
+			spliter		= host.split(':')
+			self.host 	= spliter[0]
+			if len(spliter) < 2:
+				self.port	= 80
+		
+		self.headers.update({
+				'User-Agent': self.user_agent,
+				'Accept-Encoding': 'gzip, deflate',
+				'Connection': 'close'
+			})
+
+		if len(_login) > 1:
+			self.headers.update({'Authorization': "Basic " + b64encode(_login.encode('ascii')).decode('utf-8')})
+
+		if https:
+			self.request 	= HTTPSConnection(self.host,self.port, timeout = self.timeout)
+		else:
+			self.request 	= HTTPConnection(self.host,self.port, timeout = self.timeout)
+
+	def Request(self, url, method = 'GET', params = None, header={}):
+		# print("data : %s \nparams : %s" % (url,params))
+		if self.rand_useragent:
+			self.user_agent 	= self.user_agents.getRandomUserAgent()
+			self.headers.update({'User-Agent': self.user_agent})
+		
+		if params:
+			self.headers.update({'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'})
+		elif 'Content-Type' in self.headers:
+			del self.headers['Content-Type']
+
+		if len(header) > 0:
+			self.headers.update(header)
+
+		while True:
+			if not self.proxy:
+				if url.startswith('http'):
+					url = url.split('/', 3)
+					if len(url) > 3:
+						url 	= '/' + url[3]
+			if params:
+				self.request.request(method, url, params, headers = self.headers)
+			else:
+				self.request.request(method, url, headers = self.headers)
+			
+			self.request.sock.settimeout(self.timeout)
+			self.response	= self.request.getresponse()
+			######## store cookie ###########
+			if self.storecookie and self.response.getheader('set-cookie'):
+				cookies = []
+				for c in self.response.getheader('set-cookie').split(','):
+					cookies.append(c.split(';', 1)[0])
+
+				cookie 	= self.headers['Cookie'] + ';' if 'Cookie' in self.headers else ''
+				cookies = cookie + '; '.join(cookies)
+				
+				result	= {}
+				for c in cookies.split(';'):
+					tmp	= c.strip().split('=', 2)
+					if len(tmp) == 2:
+						result[tmp[0]] = tmp[1]
+				self.cookie	= '; '.join(k +'='+ v for k,v in result.items())
+				self.headers.update({'Cookie': self.cookie})
+			###
+			self.result = self.response.read()
+			if self.response.getheader('content-encoding') == 'gzip':
+				self.result = GzipFile(fileobj=BytesIO(self.result)).read()
+			self.result	= self.result.decode('utf-8', 'replace')
+			###
+			refresh	= search('http-equiv=.refresh(.*?)content=("|\')(.*?)url=(.*?)\2',self.result[:1000].lower())
+			if (self.response.getheader('location') or refresh) and self.redirect:
+				if self.response.getheader('location'):
+					url 	= self.response.getheader('location')
+				else:
+					url = refresh.group(4)
+				params	= None
+				method	= 'GET'
+				if 'Content-Type' in self.headers:
+					del self.headers['Content-Type']
+			else:
+				break
+		#########################		
+		self.request.close()
+		#print(self.result)
+		return self.result

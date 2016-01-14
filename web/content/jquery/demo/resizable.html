@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="demo.css">
+	<style type="text/css">
+		#rr{
+			width:100px;
+			height:100px;
+			background:#fafafa;
+			border:1px solid #ccc;
+		}
+		#dd{
+			left:100px;
+			top:100px;
+			width:100px;
+			height:100px;
+			background:#fafafa;
+			border:1px solid #ccc;
+			position:absolute;
+			left:300px;
+			top:200px;
+		}
+		#rd{
+			margin:10px;
+			padding:10px;
+			width:100px;
+			height:100px;
+			background:#fafafa;
+			border:1px solid #ccc;
+			position:absolute;
+			left:400px;
+			top:200px;
+		}
+	</style>
+	<script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+	<script>
+		$(function(){
+			$('#rd').draggable({edge:5}).resizable();
+		});
+	</script>
+</head>
+<body>
+	<h2>Resizable</h2>
+	<div id="rr" class="easyui-resizable" data-options="minWidth:50,minHeight:50">Resize Only</div>
+	<div id="dd" class="easyui-draggable" data-options="handle:'#mytitle'">
+		<div id="mytitle" style="background:red;padding:5px;">Title</div>
+		Drag Only
+	</div>
+	<div id="rd">Resize/Drag</div>
+</body>
+</html>

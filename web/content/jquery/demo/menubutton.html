@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>MenuButton - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="demo.css">
+	<script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+	<script>
+		$(function(){
+			$('#dd1').click(function(){
+				$('#mb1,#mb2').menubutton({
+					disabled:true
+				});
+			});
+			$('#dd2').click(function(){
+				$('#mb1,#mb2').menubutton({
+					disabled:false
+				});
+			});
+			$('#dd3').click(function(){
+				$('#mb1,#mb2').menubutton({
+					plain:false
+				});
+			});
+			$('#dd4').click(function(){
+				$('#mb1,#mb2').menubutton({
+					plain:true
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<h2>MenuButton</h2>
+	<div class="demo-info">
+		<div class="demo-tip icon-tip"></div>
+		<div>
+			MenuButton include linkbutton and menu.
+			When create a MenuButton you should assign a menu attribute to the linkbutton.
+		</div>
+	</div>
+	
+	<div style="margin:10px 0;">
+		<a href="javascript:void(0)" id="dd1">Disable</a>
+		<a href="javascript:void(0)" id="dd2">Enable</a>
+		<a href="javascript:void(0)" id="dd3">3D</a>
+		<a href="javascript:void(0)" id="dd4">Plain</a>
+	</div>
+	<div style="background:#C9EDCC;padding:5px;width:600px;">
+		<a href="javascript:void(0)" id="mb1" class="easyui-menubutton" data-options="menu:'#mm1',iconCls:'icon-edit'">Edit</a>
+		<a href="javascript:void(0)" id="mb2" class="easyui-menubutton" data-options="menu:'#mm2',iconCls:'icon-help'">Help</a>
+	</div>
+	<div id="mm1" style="width:150px;">
+		<div data-options="iconCls:'icon-undo'">Undo</div>
+		<div data-options="iconCls:'icon-redo'">Redo</div>
+		<div class="menu-sep"></div>
+		<div>Cut</div>
+		<div>Copy</div>
+		<div>Paste</div>
+		<div class="menu-sep"></div>
+		<div>
+			<span>Toolbar</span>
+			<div style="width:150px;">
+				<div>Address</div>
+				<div>Link</div>
+				<div>Navigation Toolbar</div>
+				<div>Bookmark Toolbar</div>
+				<div class="menu-sep"></div>
+				<div>New Toolbar...</div>
+			</div>
+		</div>
+		<div data-options="iconCls:'icon-remove'">Delete</div>
+		<div>Select All</div>
+	</div>
+	<div id="mm2" style="width:100px;">
+		<div>Help</div>
+		<div>Update</div>
+		<div>About</div>
+	</div>
+</body>
+</html>

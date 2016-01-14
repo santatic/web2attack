@@ -1,0 +1,155 @@
+# modules/tools/http_proxy.py
+#
+# Copyright 2012 Kid :">
+# to run it,requite tunnel.php
+
+from w2a.core.templates import Templates
+from w2a.config import CONFIG
+from w2a.lib.file import FullPath, ReadFromFile
+
+
+from hashlib import md5
+from binascii import unhexlify
+
+class Module(Templates):
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
+		############################
+		self.version		= 1
+		self.author			= [ 'Kid' ]
+		self.description 	= 'Http Proxy with php host'
+		self.detailed_description	= 'This module retreives create virtual http proxy with php host'
+		############################
+		self.options.addPath('FILE', 'file to sort', False)
+		self.options.addPath('DIRECTORY', 'dir to sort', default = CONFIG.TMP_PATH)
+		############################
+
+	def run(self, frmwk, args):
+		self.vpsp_pe = None;
+		self.vpsp_pd = None;
+		_key = b"321321"
+
+		# print(base64.b64encode(self.md5hash(self.md5hash(b"123123"))))
+		frmwk.print_line(self.vc_init(_key, self.vc_generatekeyhash(_key)))
+
+	# def phpmd5(self, st):
+	# 	crc = new('ripemd160')
+	# 	# for i in iter(st, b''):
+	# 	# 	# print(i)
+	# 	# 	crc.update(chr(i).encode('utf-8'))
+	# 	crc.update(st)
+	# 	return crc.hexdigest()
+
+	def md5hash(self, st):
+		# function MD5Hash($str) {
+		# 	$m = md5($str);
+		# 	$s = '';
+		#  	foreach(explode("\n", trim(chunk_split($m, 2))) as $h) {
+		#  		$s .= chr(hexdec($h));
+		#  	}
+		# 	return $s;
+		# }
+		m 	= md5(st).hexdigest()
+		return unhexlify(m.encode())
+
+	def vc_init(self, key, ks):
+		# function VC_Init($key, $ks) {
+		# 	$s = range(0, 255);
+		# 	if (strlen($key) == 0) {
+		# 		return $s;
+		# 	}
+		# 	$km = MD5Hash($key);
+		# 	$kx = '';
+		# 	for ($i = 0; $i < 16; $i++) {
+		# 		$kx .= MD5Hash($km . $km[$i] .  chr($ks));
+		# 	}
+		# 	$r = ($ks % 0x0F) + 1;
+		# 	$j = $ks;
+		# 	for ($n = 0; $n < $r; $n++) {
+		# 		for ($i = 0; $i < 256; $i++) {
+		# 			$j = (($j + $s[$i] + $n + ord($kx[$i])) ^ $ks) % 256;
+		# 			$t = $s[$i];
+		# 			$s[$i] = $s[$j];
+		# 			$s[$j] = $t;
+		# 		}
+		# 	}
+		# 	for ($i = 0; $i < 256; $i++) {
+		# 		$s[$i] = $s[$i] ^ $ks;
+		# 	}
+		# 	return $s;
+		# }
+
+		_s = list(range(0, 256))
+		
+		if len(key) == 0:
+			return _s
+		
+		_km 	= self.md5hash(self.md5hash(key))
+		_kx 	= ''
+		for i in range(0,16):
+			print(ks)
+			_kx 	+= self.md5hash(_km + chr(_km[i]) + chr(ks))
+
+		_r 	= (ks % 0x0F) + 1
+		_j 	= ks
+		
+		for n in range(0, _r):
+			for i in range(0,256):
+				j 		= ((_j + _s[i] + n + ord(_kx[i])) ^ ks) % 256
+				_t 		= _s[i]
+				_s[i]	= _s[j]
+				_s[j] 	= _s[i]
+
+		for i in range(0,256):
+			_s[i] 	= _s[i] ^ ks
+		return _s
+
+	def vc_generatekeyhash(self, key):
+		# function VC_GenerateKeyHash($key) {
+		# 	$m = MD5Hash($key);
+		# 	$kt = 0;
+		# 	for ($i = 0; $i < 16; $i++) {
+		# 		$kt += ord($m[$i]);
+		# 	}
+		# 	return $kt % 256;
+		# }
+		_m 		= self.md5hash(key)
+		_kt 	= 0
+		for i in range(0,16):
+			_kt 	+= _m[i]
+		return _kt % 256
+
+
+	def vc_encrypt(self, t):
+		# function VC_Encrypt($str) {
+		# 	$pe = $GLOBALS['vpsp_pe'];
+		# 	$out = '';
+		# 	$len = strlen($str);
+		# 	for ($y = 0; $y < $len; $y++) {
+		# 		$out .= chr($pe[ord($str[$y])]);
+		# 	}
+		# 	return $out;
+		# }
+		_pe 	= self.vpsp_pe
+		_out 	= ''
+		_len 	= len(t)
+		for y in range(0,_len):
+			_out 	+= chr(pe[ord(t[y])])
+		return _out
+
+	def vc_decrypt(self, t):
+		# function VC_Decrypt($str) {
+		# 	$pd = $GLOBALS['vpsp_pd'];
+		# 	$out = '';
+		# 	$len = strlen($str);
+		# 	for ($y = 0; $y < $len; $y++) {
+		# 		$out .= chr($pd[ord($str[$y])]);
+		# 	}
+		# 	return $out;
+		# }
+		_pd 	= self.vpsp_pd
+		_out 	= ''
+		_len 	= len(t)
+		for y in range(0,_len):
+			_out 	+= chr(pd[ord(t[y])])
+		return _out

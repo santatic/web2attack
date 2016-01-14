@@ -1,0 +1,184 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+import sys
+from json import dumps
+from socket import gethostbyname
+from base64 import b64encode, b64decode
+
+from w2a.lib.file import FullPath
+from w2a.core.core import Framework
+from w2a.lib.dbconnect import DBConnect, getDomain, getUser , getIP
+from w2a.config import CONFIG
+from w2a.modules.info import reverse_ip, harvester
+from w2a.lib.ip import IP
+
+from web.lib.login import Md5, RandChar, CheckUser
+###############################
+sys.path.append(FullPath('web'))
+###############################
+import cherrypy
+from cherrypy.lib import static
+
+def datagirdConvert(domains):
+	result = {"rows":[]}
+	for domain in domains:
+		result["rows"].append({"domain":domain})
+	return dumps(result)
+
+class W2AGUI:
+	_cp_config = {	
+					'tools.sessions.on': True,
+					'tools.sessions.timeout': 7200,
+					'tools.staticdir.root' : FullPath(''),
+					'error_page.404' : FullPath('web/error/404.html'),
+					'error_page.500' : FullPath('web/error/500.html'),
+				}
+	def __init__(self):
+		self.frmwk 			= Framework()
+		# self.output_store	= []
+		# sys.stdout.write	= self.output
+		try:
+			self.dbconnect		= DBConnect()
+		except Exception as ex:
+			self.dbconnect 		= None
+			pass
+
+		if self.dbconnect:
+			self.db 		= self.dbconnect.db
+		
+
+	# def output(self,messsage):
+	# 	self.output_store.append(messsage)
+
+	def checklogin(self):
+		if 'login' in cherrypy.session.keys():
+			return cherrypy.session['login']
+		return False
+	###############################################################################
+	def index(self):
+		if not self.dbconnect:
+			return('database error')
+		if self.checklogin():
+			return static.serve_file(FullPath('web/index.html'))
+		else:
+			return static.serve_file(FullPath('web/login.html'))
+	index.exposed = True
+	
+	# def get0utPut(self):
+	# 	while len(self.output_store) > 0:
+	# 	 	yield self.output_store.pop(0)
+	# get0utPut.exposed	= True
+	
+	def login(self, username = '', password = ''):
+		if username != '' and password != '' and CheckUser(username):
+			cursor	= self.db.cursor()
+			row	= getUser(cursor, ['username','password','salt'], {'username': username})
+			if len(row) > 0:
+				row = row[0]
+				if Md5(Md5(password + b64decode(row[2].encode('ascii')).decode('utf-8'))) == row[1]:
+					cherrypy.session['login']	= True
+					cherrypy.session['user']	= username
+					return static.serve_file(FullPath('web/index.html'))
+			cursor.close()
+		return static.serve_file(FullPath('web/login.html'))
+	login.exposed = True
+	
+	def logout(self):
+		cherrypy.session.delete()
+		return static.serve_file(FullPath('web/login.html'))
+	logout.exposed = True
+
+	# def registry(self, username = '', password = ''):
+	# 	if username != '' and password != '':
+	# 		cursor	= self.db.cursor()
+	# 		query	= "SELECT username,password,salt FROM `Member` WHERE `username`='%s'" % username
+	# 		cursor.execute(query)
+	# 		row	= cursor.fetchone()
+	# 		if row != None:
+	# 			return cherrypy.HTTPRedirect("/")
+	# 		else:
+	# 			salt	= RandChar(10)
+	# 			print(salt)
+	# 			query	= "INSERT INTO `Member` (username,password,salt) VALUES ('%s','%s','%s')" % (username, Md5(Md5(password+salt)), b64encode(salt.encode('ascii')).decode('utf-8'))
+	# 			print(query)
+	# 			cursor.execute(query)
+	# 			self.db.commit()
+	# 		cursor.close()
+	# 	return static.serve_file(FullPath('web/login.html'))
+	# registry.exposed = True
+
+	def reverseip(self, ip, type = 'new'):
+		#return static.serve_file(FullPath('web/content/test.json'))
+		if self.checklogin():
+			domains	= []
+			key		= True
+			if type == 'database':
+				db 	= self.frmwk.dbconnect.db
+				cursor = db.cursor()
+				try:
+					ip 	= gethostbyname(ip)
+					row	= getIP(cursor, ip)
+					if row != None:
+						rows = getDomain(cursor, ['domain_name'], {'ip_id_list': '%%!%s|%%' % row[0]})
+						if len(rows) > 0:
+							for r in rows:
+								domains.append(r[0])
+							key	= False
+				except Exception as ex:
+					self.frmwk.print_error("Cann't get IP by domain: %s" % ip)
+
+			if key:
+				module 	= reverse_ip.Module()
+				module.options.addString('RHOST', 'IP/Domain to reverse', default = ip)
+				module.options.addBoolean('CHECK', 'check domain is in this IP ', default = True)
+				module.options.addBoolean('OUTPUTFILE', 'check if want to save list of domain', default = False)
+				module.options.addInteger('THREADS', 'thread check domain', default = 10)
+
+				module.run(self.frmwk, None)
+				domains = module.domains
+			domains	= datagirdConvert(domains)
+			return domains
+		else:
+			return static.serve_file(FullPath('web/login.html'))
+	reverseip.exposed = True
+
+	def harvester(self, domain ,type = 'new'):
+		if self.checklogin():
+			domains	= []
+			key		= True
+			if type == 'database':
+				db 	= self.frmwk.dbconnect.db
+				cursor = db.cursor()
+				try:
+					rows = getDomain(cursor, ['domain_name'], {'domain_name': '%%%s' % domain})
+					if len(rows) > 0:
+						for r in rows:
+							domains.append(r[0])
+						key		= False
+				except Exception as ex:
+					self.frmwk.print_error("Cann't get IP by domain: %s" % domain)
+
+			if key:
+				module 	= harvester.Module()
+				module.options.addString('DOMAIN', 'Domain/Company', default = domain)
+				module.options.addString('SEARCHER', 'select search enginee', default = 'all')
+				module.options.addInteger('LIMIT', 'set limit search', default = 1000)
+				module.options.addString('TYPE', 'type scan', default = 'slow')
+				module.options.addInteger('DELAY', 'delay time', default = 1)
+				module.options.addBoolean('MULTITHREADS', 'check domain', False)
+				module.run(self.frmwk, None)
+				domains = module.subs
+			ip	= IP()
+			listip	= ip.getListIP(domains, 5)
+			domains = []
+			for ip in listip.keys():
+				domains += listip[ip]
+			print(domains)
+			return datagirdConvert(domains)
+		else:
+			return static.serve_file(FullPath('web/login.html'))
+	harvester.exposed = True
+##############################################################
+if __name__ == '__main__':
+		cherrypy.quickstart(W2AGUI(), config = FullPath('web/w2a.conf'))

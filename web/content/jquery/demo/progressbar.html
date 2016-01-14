@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>ProgressBar - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="demo.css">
+	<script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+	<script>
+		function test(){
+			var value = $('#p').progressbar('getValue');
+			if (value < 100){
+				value += Math.floor(Math.random() * 10);
+				$('#p').progressbar('setValue', value);
+				setTimeout(arguments.callee, 200);
+			}
+		}
+	</script>
+</head>
+<body>
+	<h2>ProgressBar</h2>
+	<div class="demo-info">
+		<div class="demo-tip icon-tip"></div>
+		<div>Click below button to show progress information.</div>
+	</div>
+	
+	<div style="margin: 10px 0">
+		<a href="#" class="easyui-linkbutton" onclick="test()">Test</a>
+	</div>
+	
+	<div id="p" class="easyui-progressbar" style="width:400px;"></div>
+</body>
+</html>

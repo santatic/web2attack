@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Accordion - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="demo.css">
+	<script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+	<script type="text/javascript">
+		function select(){
+			$('#aa').accordion('select','Title1');
+		}
+		var idx = 1;
+		function add(){
+			$('#aa').accordion('add',{
+				title:'New Title'+idx,
+				content:'New Content'+idx
+			});
+			idx++;
+		}
+		function remove(){
+			var pp = $('#aa').accordion('getSelected');
+			if (pp){
+				var index = $('#aa').accordion('getPanelIndex',pp);
+				$('#aa').accordion('remove',index);
+			}
+		}
+	</script>
+</head>
+<body>
+	<h2>Accordion</h2>
+	<div class="demo-info">
+		<div class="demo-tip icon-tip"></div>
+		<div>Click on panel header to show its content.</div>
+	</div>
+	
+	<div style="margin: 10px 0;">
+		<a href="#" class="easyui-linkbutton" onclick="select()">Select</a>
+		<a href="#" class="easyui-linkbutton" onclick="add()">Add</a>
+		<a href="#" class="easyui-linkbutton" onclick="remove()">Remove</a>
+	</div>
+	
+	<div id="aa" class="easyui-accordion" style="width:700px;height:300px;">
+		<div title="Title1" data-options="iconCls:'icon-ok'" style="overflow:auto;padding:10px;">
+			<h3 style="color:#0099FF;">Accordion for jQuery</h3>
+			<p>Accordion is a part of easyui framework for jQuery. It lets you define your accordion component on web page more easily.</p>
+		</div>
+		<div title="Title2" data-options="iconCls:'icon-search',selected:true,
+				tools:[{
+					iconCls:'icon-reload',
+					handler:function(){
+						$('#tt').datagrid('reload');
+					}
+				}]">
+			<table id="tt" class="easyui-datagrid" 
+					data-options="url:'datagrid_data2.json',border:false,fit:true,fitColumns:true,singleSelect:true">
+				<thead>
+					<tr>
+						<th data-options="field:'itemid',width:80">Item ID</th>
+						<th data-options="field:'productid',width:100">Product ID</th>
+						<th data-options="field:'listprice',width:80,align:'right'">List Price</th>
+						<th data-options="field:'unitcost',width:80,align:'right'">Unit Cost</th>
+						<th data-options="field:'attr1',width:150">Attribute</th>
+						<th data-options="field:'status',width:50,align:'center'">Status</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<div title="Title3" style="padding:10px;">
+			content3
+		</div>
+	</div>
+</body>
+</html>

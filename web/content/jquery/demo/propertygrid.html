@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>PropertyGrid - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="demo.css">
+	<script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+	<script type="text/javascript">
+		function showGroup(){
+			$('#tt').propertygrid({
+				showGroup:true
+			});
+		}
+		function hideGroup(){
+			$('#tt').propertygrid({
+				showGroup:false
+			});
+		}
+		function hideHeader(){
+			$('#tt').propertygrid({
+				showHeader:false
+			});
+		}
+		function getChanges(){
+			var s = '';
+			var rows = $('#tt').propertygrid('getChanges');
+			for(var i=0; i<rows.length; i++){
+				s += rows[i].name + ':' + rows[i].value + ',';
+			}
+			alert(s)
+		}
+	</script>
+</head>
+<body>
+	<h2>PropertyGrid</h2>
+	<div class="demo-info">
+		<div class="demo-tip icon-tip"></div>
+		<div>Click on row to change each property value.</div>
+	</div>
+	
+	<div style="margin:10px 0">
+		<a href="#" class="easyui-linkbutton" onclick="showGroup()">ShowGroup</a>
+		<a href="#" class="easyui-linkbutton" onclick="hideGroup()">HideGroup</a>
+		<a href="#" class="easyui-linkbutton" onclick="hideHeader()">HideHeader</a>
+		<a href="#" class="easyui-linkbutton" onclick="getChanges()">GetChanges</a>
+	</div>
+	
+	<table id="tt" class="easyui-propertygrid" style="width:300px"
+			data-options="url:'propertygrid_data.json',showGroup:true,scrollbarSize:0"></table>
+</body>
+</html>

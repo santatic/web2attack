@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>LinkButton - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="demo.css">
+	<script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+	<style>
+		.toolbar{
+			height:30px;
+			padding:5px;
+		}
+	</style>
+	<script>
+		function enable(){
+			$('a.easyui-linkbutton').linkbutton('enable');
+		}
+		function disable(){
+			$('a.easyui-linkbutton').linkbutton('disable');
+		}
+		function changetext(){
+			$('#add').linkbutton({text:'new add'});
+		}
+	</script>
+</head>
+<body>
+	<h2>LinkButton</h2>
+	<div class="demo-info" style="margin-bottom:10px">
+		<div class="demo-tip icon-tip"></div>
+		<div>Buttons can be created from &lt;a/&gt; link.</div>
+	</div>
+	
+	<div style="padding:5px;">
+		<a href="#" onclick="enable()">enable</a> |
+		<a href="#" onclick="disable()">disable</a> |
+		<a href="#" onclick="changetext()">change add text</a> |
+		<a href="#" onclick="javascript:$('#add').linkbutton({disabled:true})">disable add button</a> |
+		<a href="#" onclick="javascript:$('#add').linkbutton({disabled:false})">enable add button</a> | 
+		<a href="#" onclick="javascript:$('a.easyui-linkbutton').linkbutton({plain:true})">make to plain</a> | 
+		<a href="#" onclick="javascript:$('a.easyui-linkbutton').linkbutton({plain:false})">restore</a>  
+	</div>
+	<p>3D</p>
+	<div class="toolbar">
+		<a id="add" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'">Add</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove'">Remove</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'">Save</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cut',disabled:true">Cut</a>
+		<a href="#" class="easyui-linkbutton" onclick="javascript:alert('ttt')">Text Button</a>
+	</div>
+	<div class="toolbar">
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">Ok</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-no'">No</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">Cancel</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-reload'">Reload</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">Search</a>
+	</div>
+	<div class="toolbar">
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-print'">Print</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-help'">Help</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-undo'">Undo</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-redo'">Redo</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-back'">Back</a>
+	</div>
+	
+	<p>Plain</p>
+	<div style="padding:5px;background:#fafafa;width:500px;">
+		<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-cancel'">Cancel</a>
+		<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reload'">Reload</a>
+		<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-search'">Search</a>
+		<a href="#" class="easyui-linkbutton" data-options="plain:true">Text Button</a>
+		<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-print'">Print</a>
+	</div>
+	
+	<p>DEMO1</p>
+	<div style="padding:5px;background:#fafafa;width:500px;">
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">Cancel</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-reload'">Refresh</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">Query</a>
+		<a href="#" class="easyui-linkbutton">text button</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-print'">Print</a>
+	</div>
+	
+	<p>DEMO2</p>
+	<div style="padding:5px;background:#fafafa;width:500px;">
+		<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-cancel'">Cancel</a>
+		<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reload'">Refresh</a>
+		<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-search'">Search</a>
+		<a href="#" class="easyui-linkbutton" data-options="plain:true">text button</a>
+		<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-print'">Print</a>
+		<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-help'"> </a>
+		<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-save'"></a>
+		<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-back'"></a>
+	</div>
+	
+</body>
+</html>

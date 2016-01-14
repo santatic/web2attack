@@ -1,0 +1,58 @@
+.menu{
+	position:absolute;
+	background:#fff;
+	margin:0;
+	padding:2px;
+	border:1px solid #ddd;
+	overflow:hidden;
+}
+.menu-item{
+	position:relative;
+	margin:0;
+	padding:0;
+	height:22px;
+	line-height:20px;
+	overflow:hidden;
+	font-size:12px;
+	cursor:pointer;
+	border:1px solid #fff;
+}
+.menu-text{
+	position:absolute;
+	left:28px;
+	top:0px;
+}
+.menu-icon{
+	position:absolute;
+	width:16px;
+	height:16px;
+	top:3px;
+	left:2px;
+}
+.menu-rightarrow{
+	position: absolute;
+	width:4px;
+	height:7px;
+	top:7px;
+	right:5px;
+	background:url('images/menu_rightarrow.png') no-repeat;
+}
+.menu-sep{
+	margin:3px 0 3px;
+	line-height:2px;
+	font-size:2px;
+	background:url('images/menu_sep.png') repeat-x;
+}
+.menu-active{
+	border:1px solid #ddd;
+	background:#E6E6E6;
+}
+.menu-item-disabled{
+	opacity:0.5;
+	filter:alpha(opacity=50);
+	cursor:default;
+}
+.menu-active-disabled{
+	border-color:#ddd;
+}
+

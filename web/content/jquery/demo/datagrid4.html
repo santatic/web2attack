@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Custom DataGrid Row Style - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="demo.css">
+	<script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+	<script>
+		$(function(){
+			$('#tt').datagrid({
+				url: 'datagrid_data2.json',
+				title: 'DataGrid',
+				width: 700,
+				height: 300,
+				fitColumns: true,
+				nowrap:false,
+				columns:[[
+					{field:'itemid',title:'Item ID',width:80},
+					{field:'productid',title:'Product ID',width:120},
+					{field:'listprice',title:'List Price',width:80,align:'right',
+						styler:function(value,row,index){
+							if (value < 20){
+								return 'background-color:#ffee00;color:red;';
+							}
+						}
+					},
+					{field:'unitcost',title:'Unit Cost',width:80,align:'right'},
+					{field:'attr1',title:'Attribute',width:250},
+					{field:'status',title:'Status',width:60,align:'center'}
+				]],
+				rowStyler:function(index,row){
+					if (row.listprice>80){
+						return 'background-color:#6293BB;color:#fff;font-weight:bold;';
+					}
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<h2>DataGrid - Custom Row Style</h2>
+	<div class="demo-info" style="margin-bottom:10px">
+		<div class="demo-tip icon-tip"></div>
+		<div>You can change the row style in some condition.</div>
+	</div>
+	
+	<table id="tt"></table>
+</body>
+</html>

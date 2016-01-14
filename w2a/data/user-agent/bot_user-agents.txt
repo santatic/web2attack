@@ -1,0 +1,331 @@
+!Susie (http://www.sync2it.com/susie)
+( Robots.txt Validator http://www.searchengineworld.com/cgi-bin/robotcheck.cgi )
+(DreamPassport/3.0; isao/MyDiGiRabi)
+(Privoxy/1.0)
+*/Nutch-0.9-dev
++SitiDi.net/SitiDiBot/1.0 (+Have Good Day)
+-DIE-KRAEHE- META-SEARCH-ENGINE/1.1 http://www.die-kraehe.de
+123spider-Bot (Version: 1.02, powered by www.123spider.de
+192.comAgent
+1st ZipCommander (Net) - http://www.zipcommander.com/
+2Bone_LinkChecker/1.0 libwww-perl/5.64
+4anything.com LinkChecker v2.0
+8484 Boston Project v 1.0
+A-Online Search
+A1 Keyword Research/1.0.2 (+http://www.micro-sys.dk/products/keyword-research/) miggibot/2007.03.27
+A1 Sitemap Generator/1.0 (+http://www.micro-sys.dk/products/sitemap-generator/) miggibot/2006.01.24
+ABCdatos BotLink/5.xx.xxx#BBL
+AESOP_com_SpiderMan
+AIBOT/2.1 By +(www.21seek.com A Real artificial intelligence search engine China)
+ANTFresco/x.xx
+ASAHA Search Engine Turkey V.001 (http://www.asaha.com/)
+ASPSeek/1.2.5
+ASPSeek/1.2.x
+ASPSeek/1.2.xa
+ASPSeek/1.2.xxpre
+ASPseek/1.2.9d
+ASPseek/1.2.xx
+ASSORT/0.10
+AV Fetch 1.0
+AVSearch-1.0(peter.turney@nrc.ca)
+AVSearch-2.0-fusionIdx-14-CompetitorWebSites
+AVSearch-3.0(AltaVista/AVC)
+AWeb
+AbachoBOT
+AbachoBOT (Mozilla compatible)
+Aberja Checkomat
+About/0.1libwww-perl/5.47
+Accelatech RSSCrawler/0.4
+Accoona-AI-Agent/1.1.1 (crawler at accoona dot com)
+Accoona-AI-Agent/1.1.2 (aicrawler at accoonabot dot com)
+Ace Explorer
+Ack (http://www.ackerm.com/)
+AcoiRobot
+AcoiRobot/1.0 libwww/5.3.2
+Acoon Robot v1.01 (www.acoon.de)
+Acoon Robot v1.50.001
+Acoon Robot v1.52 (http://www.acoon.de)
+Acoon-Robot 4.0.x.[xx] (http://www.acoon.de)
+Acoon-Robot v3.xx (http://www.acoon.de and http://www.acoon.com)
+Acorn/Nutch-0.9 (Non-Profit Search Engine; acorn.isara.org; acorn at isara dot org)
+ActiveBookmark 1.x
+ActiveWorlds/3.xx (xxx)
+Activeworlds
+Ad Muncher v4.xx.x
+Ad Muncher v4x Build xxxxx
+Adaxas Spider (http://www.adaxas.net/)
+Advanced Browser (http://www.avantbrowser.com)
+Agent-SharewarePlazaFileCheckBot/2.0+(+http://www.SharewarePlaza.com)
+AgentName/0.1 libwww-perl/5.48
+AgentName/0.1 libwww-perl/5.50
+AideRSS/1.0 (aiderss.com)
+Akregator/1.2.9; librss/remnants
+Aladin/3.324
+Aleksika Spider/1.0 (+http://www.aleksika.com/)
+AlertInfo 2.0 (Powered by Newsbrain)
+AlkalineBOT/1.3
+AlkalineBOT/1.4 (1.4.0326.0 RTM)
+Allesklar/0.1 libwww-perl/5.46
+Alligator 1.31 (www.nearsoftware.com)
+Allrati/1.1 (+)
+AltaVista Intranet V2.0 AVS EVAL search@freeit.com
+AltaVista Intranet V2.0 Compaq Altavista Eval sveand@altavista.net
+AltaVista Intranet V2.0 evreka.com crawler@evreka.com
+AltaVista Intranet*
+AltaVista V2.0B crawler@evreka.com
+AmfibiBOT
+Amfibibot/0.06 (Amfibi Web Search; http://www.amfibi.com; agent@amfibi.com)
+Amfibibot/0.07 (Amfibi Robot; http://www.amfibi.com; agent@amfibi.com)
+AmiTCP Miami (AmigaOS 2.04)
+Amiga-AWeb/3.4.167SE
+AmigaVoyager/3.4.4 (MorphOS/PPC native)
+Amoi 8512/R21.0 NF-Browser/3.3
+AnnoMille spider 0.1 alpha - http://www.annomille.it
+Anonymized by ProxyOS: http://www.megaproxy.com
+Anonymizer/1.1
+AnswerBus (http://www.answerbus.com/)
+AnswerChase PROve x.0
+AnswerChase x.0
+AnzwersCrawl/2.0 (anzwerscrawl@anzwers.com.au; http://faq.anzwers.com.au/anzwerscrawl.html)
+AnzwersCrawl/2.0 (anzwerscrawl@anzwers.com.au;Engine)
+Apexoo Spider 1.x
+Aplix HTTP/1.0.1
+Aplix_SANYO_browser/1.x (Japanese)
+Aplix_SEGASATURN_browser/1.x (Japanese)
+Aport
+Apple-PubSub/65.1.1
+ArabyBot (compatible; Mozilla/5.0; GoogleBot; FAST Crawler 6.4; http://www.araby.com;)
+ArachBot
+Arachnoidea (arachnoidea@euroseek.com)
+ArchitextSpider
+Argus/1.1 (Nutch; http://www.simpy.com/bot.html; feedback at simpy dot com)
+Arikus_Spider
+Arquivo-web-crawler (compatible; heritrix/1.12.1 +http://arquivo-web.fccn.pt)
+Asahina-Antenna/1.x
+Asahina-Antenna/1.x (libhina.pl/x.x ; libtime.pl/x.x)
+AskAboutOil/0.06-rcp (Nutch; http://www.nutch.org/docs/en/bot.html; nutch-agent@askaboutoil.com)
+AtlocalBot/1.1 +(http://www.atlocal.com/local-web-site-owner.html)
+Atomic_Email_Hunter/4.0
+Atomz/1.0
+Attentio/Nutch-0.9-dev (Attentio's beta blog crawler; www.attentio.com; info@attentio.com)
+Autonomy Spider
+Avant Browser (http://www.avantbrowser.com)
+AxmoRobot
+AxmoRobot - Crawling your site for better indexing on www.axmo.com search engine.
+Azureus 2.x.x.x
+BDFetch
+BDNcentral Crawler v2.3 [en] (http://www.bdncentral.com/robot.html) (X11; I; Linux 2.0.44 i686)
+BIGLOTRON (Beta 2;GNU/Linux)
+BMCLIENT
+BMLAUNCHER
+BPImageWalker/2.0 (www.bdbrandprotect.com)
+BSDSeek/1.0
+BStop.BravoBrian.it Agent Detector
+BTWebClient/180B(9704)
+BTbot/0.x (+http://www.btbot.com/btbot.html)
+BW-C-2.0
+BabalooSpider/1.3 (BabalooSpider; http://www.babaloo.si; spider@babaloo.si)
+BaboomBot/1.x.x (+http://www.baboom.us)
+BackStreet Browser 3.x
+BaiDuSpider
+BaiduImagespider+(+http://www.baidu.jp/search/s308.html)
+Baiduspider+(+http://help.baidu.jp/system/05.html)
+Baiduspider+(+http://www.baidu.com/search/spider.htm)
+Baiduspider+(+http://www.baidu.com/search/spider_jp.html)
+Balihoo/Nutch-1.0-dev
+BanBots/1.2 (spider@banbots.com)
+Barca/2.0.xxxx
+BarcaPro/1.4.xxxx
+BarraHomeCrawler (albertof@barrahome.org)
+BeamMachine/0.5 (dead link remover of www.beammachine.net)
+BebopBot/2.5.1 ( crawler http://www.apassion4jazz.net/bebopbot.html )
+BeebwareDirectory/v0.01
+Big Brother (http://pauillac.inria.fr/~fpottier/)
+Big Fish v1.0
+BigBrother/1.6e
+BigCliqueBOT/1.03-dev (bigclicbot; http://www.bigclique.com; bot@bigclique.com)
+Bigsearch.ca/Nutch-x.x-dev (Bigsearch.ca Internet Spider; http://www.bigsearch.ca/; info@enhancededge.com)
+Bilbo/2.3b-UNIX
+BilgiBetaBot/0.8-dev (bilgi.com (Beta) ; http://lucene.apache.org/nutch/bot.html; nutch-agent@lucene.apache.org)
+BilgiBot/1.0(beta) (http://www.bilgi.com/; bilgi at bilgi dot com)
+Bitacle Robot (V:1.0;) (http://www.bitacle.com)
+Bitacle bot/1.1
+Biyubi/x.x (Sistema Fenix; G11; Familia Toledo; es-mx)
+BlackWidow
+Blaiz-Bee/1.0 (+http://www.blaiz.net)
+Blaiz-Bee/2.00.8222 (BE Internet Search Engine http://www.rawgrunt.com)
+Blaiz-Bee/2.00.xxxx (+http://www.blaiz.net)
+BlitzBOT@tricus.net
+BlitzBOT@tricus.net (Mozilla compatible)
+BlockNote.Net
+BlogBot/1.1
+BlogBot/1.x
+BlogBridge 2.13 (http://www.blogbridge.com/)
+BlogMap (http://www.feedmap.net)
+BlogPulseLive (support@blogpulse.com)
+BlogSearch/1.x +http://www.icerocket.com/
+BlogVibeBot-v1.1 (spider@blogvibe.nl)
+Bloglines Title Fetch/1.0 (http://www.bloglines.com)
+Bloglines-Images/0.1 (http://www.bloglines.com)
+Bloglines/3.1 (http://www.bloglines.com)
+Blogpulse (info@blogpulse.com)
+BlogsNowBot, V 2.01 (+http://www.blogsnow.com/)
+BlogzIce/1.0 (+http://icerocket.com; rhodes@icerocket.com)
+BlogzIce/1.0 +http://www.icerocket.com/
+BloobyBot
+Bloodhound/Nutch-0.9 (Testing Crawler for Research - obeys robots.txt and robots meta tags ; http://balihoo.com/index.aspx; robot at balihoo dot com)
+Bobby/4.0.x RPT-HTTPClient/0.3-3E
+Bookdog/x.x
+Bookmark Buddy bookmark checker (http://www.bookmarkbuddy.net/)
+Bookmark Renewal Check Agent [http://www.bookmark.ne.jp/]
+Bookmark Renewal Check Agent [http://www.bookmark.ne.jp/] (Version 2.0beta)
+BookmarkBase(2/;http://bookmarkbase.com)
+Bot mailto:craftbot@yahoo.com
+BravoBrian SpiderEngine MarcoPolo
+BravoBrian bstop.bravobrian.it
+BrightCrawler (http://www.brightcloud.com/brightcrawler.asp)
+BruinBot (+http://webarchive.cs.ucla.edu/bruinbot.html)
+BuildCMS crawler (http://www.buildcms.com/crawler)
+Bulkfeeds/r1752 (http://bulkfeeds.net/)
+BullsEye
+BunnySlippers
+BurstFindCrawler/1.1 (crawler.burstfind.com; http://crawler.burstfind.com; crawler@burstfind.com)
+Buscaplus Robi/1.0 (http://www.buscaplus.com/robi/)
+CCBot/1.0 (+http://www.commoncrawl.org/bot.html)
+CE-Preload
+CERN-LineMode/2.15
+CFNetwork/x.x
+CHttpClient by Open Text Corporation
+CJ Spider/
+CJB.NET Proxy
+COAST WebMaster Pro/4.x.x.xx (Windows NT)
+CSE HTML Validator Professional (http://www.htmlvalidator.com/)
+Cabot/Nutch-0.9 (Amfibi's web-crawling robot; http://www.amfibi.com/cabot/; agent@amfibi.com)
+Cabot/Nutch-1.0-dev (Amfibi's web-crawling robot; http://www.amfibi.com/cabot/; agent@amfibi.com)
+CamelHttpStream/1.0
+Cancer Information and Support International;
+Carnegie_Mellon_University_Research_WebBOT-->PLEASE READ-->http://www.andrew.cmu.edu/~brgordon/webbot/index.html http://www.andrew.cmu.edu/~brgordon/webbot/index.html
+Carnegie_Mellon_University_WebCrawler http://www.andrew.cmu.edu/~brgordon/webbot/index.html
+Catall Spider
+CazoodleBot/CazoodleBot-0.1 (CazoodleBot Crawler; http://www.cazoodle.com/cazoodlebot; cazoodlebot@cazoodle.com)
+CentiverseBot
+CentiverseBot - investigator
+CentiverseBot/3.0 (http://www.centiverse-project.net)
+Ceramic Tile Installation Guide (http://www.floorstransformed.com)
+Charon/1.x (Amiga)
+Chat Catcher/1.0
+CheckLinks/1.x.x
+CheckUrl
+CheckWeb
+Checkbot/1.xx LWP/5.xx
+CherryPickerElite/1.0
+CherryPickerSE/1.0
+Chilkat/1.0.0 (+http://www.chilkatsoft.com/ChilkatHttpUA.asp)
+China Local Browse 2.6
+Chitika ContentHit 1.0
+ChristCRAWLER 2.0
+CipinetBot (http://www.cipinet.com/bot.html)
+Cityreview Robot (+http://www.cityreview.org/crawler/)
+ClariaBot/1.0
+Claymont.com
+CloakDetect/0.9 (+http://fulltext.seznam.cz/)
+Clushbot/2.x (+http://www.clush.com/bot.html)
+Clushbot/3.x-BinaryFury (+http://www.clush.com/bot.html)
+Clushbot/3.xx-Ajax (+http://www.clush.com/bot.html)
+Clushbot/3.xx-Hector (+http://www.clush.com/bot.html)
+Clushbot/3.xx-Peleus (+http://www.clush.com/bot.html)
+CoBITSProbe
+Cocoal.icio.us/1.0 (v36) (Mac OS X; http://www.scifihifi.com/cocoalicious)
+Cogentbot/1.X (+http://www.cogentsoftwaresolutions.com/bot.html)
+Combine/2.0 http://combine.it.lth.se/
+Combine/3 http://combine.it.lth.se/
+Combine/x.0
+Commerce Browser Center
+Computer_and_Automation_Research_Institute_Crawler crawler@ilab.sztaki.hu
+Comrite/0.7.1 (Nutch; http://lucene.apache.org/nutch/bot.html; nutch-agent@lucene.apache.org)
+Contact
+ContactBot/0.2
+ContentSmartz
+Convera Internet Spider V6.x
+ConveraCrawler/0.2
+ConveraCrawler/0.9d (+http://www.authoritativeweb.com/crawl)
+ConveraMultiMediaCrawler/0.1 (+http://www.authoritativeweb.com/crawl)
+CoolBot
+Cooliris/1.5 CFNetwork/459 Darwin/10.0.0d3
+CoralWebPrx/0.1.1x (See http://coralcdn.org/)
+CoteoNutchCrawler/Nutch-0.9 (info [at] coteo [dot] com)
+CougarSearch/0.x (+http://www.cougarsearch.com/faq.shtml)
+Crawler admin@crawler.de
+CrawlerBoy Pinpoint.com
+CrocCrawler vx.3 [en] (http://www.croccrawler.com) (X11; I; Linux 2.0.44 i686)
+Custo x.x (www.netwu.com)
+Custom Spider www.bisnisseek.com /1.0
+DBrowse 1.4d
+DC-Sakura/x.xx
+DeadLinkCheck/0.4.0 libwww-perl/5.xx
+Deep Link Calculator v1.0
+DeepIndex
+DocZilla/1.0 (Windows; U; WinNT4.0; en-US; rv:1.0.0) Gecko/20020804
+EMPAS_ROBOT
+ESISmartSpider
+EchO!/2.0
+EmeraldShield.com WebBot (http://www.emeraldshield.com/webbot.aspx)
+EuripBot/0.x (+http://www.eurip.com) GetFile
+EuripBot/0.x (+http://www.eurip.com) GetRobots
+EuripBot/0.x (+http://www.eurip.com) PreCheck
+Eurobot/1.0 (http://www.ayell.eu)
+Exabot-Images/1.0
+Exabot-Test/1.0
+Exalead NG/MimeLive Client (convert/http/0.120)
+Excalibur Internet Spider V6.5.4
+Explorer www@openxxx.net
+ExtractorPro
+Extreme Picture Finder
+EyeCatcher (Download-tipp.de)/1.0
+FAST-WebCrawler/2.2.6 (crawler@fast.no; http://www.fast.no/faq/faqfastwebsearch/faqfastwebcrawler.html)
+FAST-WebCrawler/2.2.7 (crawler@fast.no; http://www.fast.no/faq/faqfastwebsearch/faqfastwebcrawler.html)http://www.fast.no
+FAST-WebCrawler/2.2.8 (crawler@fast.no; http://www.fast.no/faq/faqfastwebsearch/faqfastwebcrawler.html)http://www.fast.no
+FAST-WebCrawler/3.2 test
+FAST-WebCrawler/3.3 (crawler@fast.no; http://fast.no/support.php?c=faqs/crawler)
+FAST-WebCrawler/3.4/Nirvana (crawler@fast.no; http://fast.no/support.php?c=faqs/crawler)
+FAST-WebCrawler/3.4/PartnerSite (crawler@fast.no; http://fast.no/support.php?c=faqs/crawler)
+FAST-WebCrawler/3.7 (atw-crawler at fast dot no; http://fast.no/support/crawler.asp)
+FDM 1.x
+FDM 2.x
+FTB-Bot http://www.findthebest.co.uk/
+FaEdit/2.0.x
+Factbot 1.09 (see http://www.factbites.com/webmasters.php)
+FairAd Client
+Fast Crawler Gold Edition
+Fast PartnerSite Crawler
+FeedHub MetaDataFetcher/1.0 (http://www.feedhub.com)
+FeedZcollector v1.x (Platinum) http://www.feeds4all.com/feedzcollector
+Feedable/0.1 (compatible; MSIE 6.0; Windows NT 5.1)
+Feedfetcher-Google-iGoogleGadgets; (+http://www.google.com/feedfetcher.html)
+Feedjit Favicon Crawler 1.0
+Finjan-prefetch
+Firefly/1.0
+FlickBot 2.0 RPT-HTTPClient/0.3-3
+FnooleBot/2.5.2 (+http://www.fnoole.com/addurl.html)
+FreshNotes crawler< report problems to crawler-at-freshnotes-dot-com
+Mercator-1.1
+Mozilla/3.0 (compatible; Indy Library)
+annotate_google; http://ponderer.org/download/annotate_google.user.js
+antibot-V1.1.5/i586-linux-2.2
+asterias/2.0
+bCentral Billing Post-Process
+bdcindexer_2.6.2 (research@bdc)
+beautybot/1.0 (+http://www.uchoose.de/crawler/beautybot/)
+cg-eye interactive
+csci_b659/0.13
+dlman
+dloader(NaverRobot)/1.0
+dodgebot/experimental
+eCatch/3.0
+eStyleSearch 4 (compatible; MSIE 6.0; Windows NT 5.0)
+eseek-larbin_2.6.2 (crawler@exactseek.com)
+exactseek.com
+factbot : http://www.factbites.com/robots
+flunky
+moget/2.1 (moget@goo.ne.jp)
+polybot 1.0

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Messager - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="demo.css">
+	<script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+	<script>
+		function show1(){
+			$.messager.show({
+				title:'My Title',
+				msg:'Message will be closed after 4 seconds.',
+				showType:'show'
+			});
+		}
+		function show2(){
+			$.messager.show({
+				title:'My Title',
+				msg:'Message will be closed after 5 seconds.',
+				timeout:5000,
+				showType:'slide'
+			});
+		}
+		function show3(){
+			$.messager.show({
+				title:'My Title',
+				msg:'Message never be closed.',
+				timeout:0,
+				showType:'fade'
+			});
+		}
+		function show4(){
+			var win = $.messager.progress({
+				title:'Please waiting',
+				msg:'Loading data...'
+			});
+			setTimeout(function(){
+				$.messager.progress('close');
+			},5000)
+		}
+		function alert1(){
+			$.messager.alert('My Title','Here is a message!');
+		}
+		function alert2(){
+			$.messager.alert('My Title','Here is a error message!','error');
+		}
+		function alert3(){
+			$.messager.alert('My Title','Here is a info message!','info');
+		}
+		function alert4(){
+			$.messager.alert('My Title','Here is a question message!','question');
+		}
+		function alert5(){
+			$.messager.alert('My Title','Here is a warning message!','warning');
+		}
+		function confirm1(){
+			$.messager.confirm('My Title', 'Are you confirm this?', function(r){
+				if (r){
+					alert('confirmed:'+r);
+					location.href = 'http://www.google.com';
+				}
+			});
+		}
+		function prompt1(){
+			$.messager.prompt('My Title', 'Please type something', function(r){
+				if (r){
+					alert('you type:'+r);
+				}
+			});
+		}
+	</script>
+</head>
+<body>
+	<h2>Messager</h2>
+	<div class="demo-info">
+		<div class="demo-tip icon-tip"></div>
+		<div>Click on each button to see a distinct message box.</div>
+	</div>
+	
+	<p>Message Window</p>
+	<div>
+		<a href="#" class="easyui-linkbutton" onclick="show1()">Show</a>
+		<a href="#" class="easyui-linkbutton" onclick="show2()">Slide</a>
+		<a href="#" class="easyui-linkbutton" onclick="show3()">Fade</a>
+		<a href="#" class="easyui-linkbutton" onclick="show4()">Progress</a>
+	</div>
+	
+	<p>Message Dialog</p>
+	<div>
+		<a href="#" class="easyui-linkbutton" onclick="alert1()">Alert</a>
+		<a href="#" class="easyui-linkbutton" onclick="alert2()">Error</a>
+		<a href="#" class="easyui-linkbutton" onclick="alert3()">Info</a>
+		<a href="#" class="easyui-linkbutton" onclick="alert4()">Question</a>
+		<a href="#" class="easyui-linkbutton" onclick="alert5()">Warning</a>
+	</div>
+	
+	<p>Interactive Dialog</p>
+	<div>
+		<a href="#" class="easyui-linkbutton" onclick="confirm1();">Confirm</a>
+		<a href="#" class="easyui-linkbutton" onclick="prompt1()">Prompt</a>
+	</div>
+</body>
+</html>

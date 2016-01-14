@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>jQuery EasyUI</title>
+	<script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+	<style type="text/css">
+		.title{
+			margin-bottom:10px;
+		}
+		.dragitem{
+			border:1px solid #ccc;
+			width:50px;
+			height:50px;
+			margin-bottom:10px;
+		}
+		.targetarea{
+			border:1px solid red;
+			height:150px;
+		}
+		.proxy{
+			border:1px solid #ccc;
+			width:80px;
+			background:#fafafa;
+		}
+	</style>
+	<script>
+		$(function(){
+			$('.dragitem').draggable({
+				revert:true,
+				deltaX:10,
+				deltaY:10,
+				proxy:function(source){
+					var n = $('<div class="proxy"></div>');
+					n.html($(source).html()).appendTo('body');
+					return n;
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<h1>DragDrop</h1>
+	<div style="float:left;width:200px;margin-right:20px;">
+		<div class="title">Source</div>
+		<div>
+			<div class="dragitem">Apple</div>
+			<div class="dragitem">Peach</div>
+			<div class="dragitem">Orange</div>
+		</div>
+	</div>
+	<div style="float:left;width:200px;">
+		<div class="title">Target</div>
+		<div class="easyui-droppable targetarea"
+				data-options="
+					accept: '.dragitem',
+					onDragEnter:function(e,source){
+						$(this).html('enter');
+					},
+					onDragLeave: function(e,source){
+						$(this).html('leave');
+					},
+					onDrop: function(e,source){
+						$(this).html($(source).html() + ' dropped');
+					}
+				">
+		</div>
+	</div>
+</body>
+</html>

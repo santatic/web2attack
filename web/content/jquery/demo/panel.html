@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Panel - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="demo.css">
+	<script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+	<script>
+		function open1(){
+			$('#p').panel('open');
+		}
+		function close1(){
+			$('#p').panel('close');
+		}
+		function load1(){
+			$('#p').panel('refresh','tabs_href_test.html');
+		}
+	</script>
+</head>
+<body>
+	<h2>Panel</h2>
+	<div class="demo-info">
+		<div class="demo-tip icon-tip"></div>
+		<div>Click the right top buttons to perform actions with panel.</div>
+	</div>
+	
+	<div style="margin:10px 0;">
+		<a href="#" class="easyui-linkbutton" onclick="open1()">Open</a>
+		<a href="#" class="easyui-linkbutton" onclick="close1()">Close</a>
+		<a href="#" class="easyui-linkbutton" onclick="load1()">Load</a>
+	</div>
+	<div style="height:300px;background:#fafafa;padding:5px;">
+		<div id="p" class="easyui-panel" style="width:500px;height:200px;padding:10px;"
+				data-options="title:'My Panel',iconCls:'icon-save',
+						collapsible:true,minimizable:true,maximizable:true,closable:true">
+			<p>panel</p>
+			<p>panel</p>
+			<p>panel</p>
+			<p>panel</p>
+			<p>panel</p>
+			<p>panel</p>
+			<p>panel</p>
+			<p>panel</p>
+			<p>panel</p>
+			<p>panel</p>
+			<p>panel</p>
+			<p>panel</p>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>SearchBox - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="demo.css">
+	<script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+</head>
+<body>
+	<h2>SearchBox</h2>
+	<div class="demo-info" style="margin-bottom:10px">
+		<div class="demo-tip icon-tip"></div>
+		<div>Click search button or press enter key in input box to do searching.</div>
+	</div>
+	
+	<input class="easyui-searchbox" data-options="prompt:'Please Input Value',menu:'#mm',
+			searcher:function(value,name){alert(value+':'+name)}" style="width:300px"></input>
+			
+	<div id="mm" style="width:120px">
+		<div data-options="name:'all',iconCls:'icon-ok'">All News</div>
+		<div data-options="name:'sports'">Sports News</div>
+	</div>
+</body>
+</html>

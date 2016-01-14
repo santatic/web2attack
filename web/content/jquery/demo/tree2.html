@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Editable Tree - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="demo.css">
+	<script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+</head>
+<body>
+	<h2>Editable Tree</h2>
+	<div class="demo-info" style="margin-bottom:10px">
+		<div class="demo-tip icon-tip"></div>
+		<div>Click the node to begin edit, press enter key to stop edit or esc key to cancel edit.</div>
+	</div>
+	
+	<ul id="tt" class="easyui-tree" data-options="url:'tree_data.json',animate:true,
+			onClick:function(node){$(this).tree('beginEdit',node.target)}"
+	></ul>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Pagination - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="demo.css">
+	<script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+</head>
+<body>
+	<h2>Pagination</h2>
+	<div class="demo-info">
+		<div class="demo-tip icon-tip"></div>
+		<div>You can change page number and page size on pager bar.</div>
+	</div>
+	
+	<div style="margin:10px 0;">
+		<a href="#" class="easyui-linkbutton" onclick="javascript:$('#pp').pagination({loading:false})">Loaded</a>
+		<a href="#" class="easyui-linkbutton" onclick="javascript:$('#pp').pagination({loading:true})">Loading</a>
+	</div>
+	
+	<div id="pp" class="easyui-pagination" style="background:#efefef;border:1px solid #ccc;"
+			data-options="
+				total:114,
+				buttons:[{
+					iconCls:'icon-add',
+					handler:function(){
+						alert('add');
+					}
+				},{
+					iconCls:'icon-cut',
+					handler:function(){
+						alert('cut');
+					}
+				},{
+					iconCls:'icon-save',
+					handler:function(){
+						alert('save');
+					}
+				}],
+				onSelectPage:function(pageNumber, pageSize){
+					$(this).pagination('loading');
+					alert('pageNumber:'+pageNumber+',pageSize:'+pageSize);
+					$(this).pagination('loaded');
+				}
+			">
+	</div>
+</body>
+</html>
