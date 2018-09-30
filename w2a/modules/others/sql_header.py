@@ -3,8 +3,8 @@
 #  Copyright 2012 Kid :">
 
 from w2a.core.templates import Templates
-from w2a.lib.net.http import HTTP
 
+from requests import get
 from re import search, DOTALL
 from sys import stdout
 
@@ -16,11 +16,11 @@ class Module(Templates):
 		self.description 	= 'Get Basic Meter Information By Reading Tables'
 		self.detailed_description	= 'This module retreives some basic meter information and displays it in a human-readable way.'
 		
-		self.options.addString('FILE', 'domain/ip', default = '/etc/passwd')
+		self.options.add_string('FILE', 'domain/ip', default = '/etc/passwd')
 
 	def run(self, frmwk, args):
 		url = 'http://www.google.com/'
-		self.victim		= HTTP(url)
+		self.victim		= get(url)
 		len = 1
 		# join	= ''
 		while True:

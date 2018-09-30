@@ -4,7 +4,7 @@
 
 from w2a.core.templates import Templates
 from w2a.config import CONFIG
-from w2a.lib.file import FullPath, ReadFromFile, WriteToFile, ListDir
+from w2a.lib.file import full_path, read_from_file, write_to_file, list_dir
 
 class Module(Templates):
 	def __init__(self, *args, **kwargs):
@@ -15,20 +15,20 @@ class Module(Templates):
 		self.description 	= 'Sort data in file or directory'
 		self.detailed_description	= 'This module retreives sort and remove duplicate lines'
 		############################
-		self.options.addPath('FILE', 'file to sort', False)
-		self.options.addPath('DIRECTORY', 'dir to sort', default = CONFIG.TMP_PATH)
+		self.options.add_path('FILE', 'file to sort', False)
+		self.options.add_path('DIRECTORY', 'dir to sort', default = CONFIG.TMP_PATH)
 		############################
 
 	def run(self, frmwk, args):
 		listfile	= []
 		listdir		= []
 		if self.options['FILE']:
-			listfile.append(FullPath(self.options['FILE']))
+			listfile.append(full_path(self.options['FILE']))
 		else:
-			files	= ListDir(self.options['DIRECTORY'])
+			files	= list_dir(self.options['DIRECTORY'])
 			if f in files:
-				listfile.append(FullPath(self.options['DIRECTORY'] + '/' + f))
+				listfile.append(full_path(self.options['DIRECTORY'] + '/' + f))
 		
 		for f in listfile:
 			frmwk.print_status('sorting : %s' % f)
-			WriteToFile(f,sorted(list(set(ReadFromFile(f)))))
+			write_to_file(f,sorted(list(set(read_from_file(f)))))

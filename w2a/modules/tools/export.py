@@ -4,7 +4,7 @@
 
 from w2a.core.templates import Templates
 # from w2a.config import CONFIG
-from w2a.lib.file import FullPath, ReadFromFile, WriteToFile, ListDir
+from w2a.lib.file import full_path, read_from_file, write_to_file
 
 class Module(Templates):
 	def __init__(self, *args, **kwargs):
@@ -15,9 +15,9 @@ class Module(Templates):
 		self.description 	= 'Sort data in file or directory'
 		self.detailed_description	= 'This module retreives sort and remove duplicate lines'
 		############################
-		self.options.addPath('INPUT', 'file hash info', False)
-		self.options.addPath('CRACKED', 'file cracked info', False)
-		self.options.addPath('OUTPUT', 'output to sort', False)
+		self.options.add_path('INPUT', 'file hash info', False)
+		self.options.add_path('CRACKED', 'file cracked info', False)
+		self.options.add_path('OUTPUT', 'output to sort', False)
 		############################
 
 	def run(self, frmwk, args):
@@ -33,7 +33,7 @@ class Module(Templates):
 		# Administrator:$NT$50d45644293044783ffce8b109fb6ed2:::
 		case 		= 0
 		write_line 	= ''
-		for line in ReadFromFile(FullPath(self.input)):
+		for line in read_from_file(full_path(write_to_file.input)):
 			if case == 0:
 				if line.startswith('User name:'):
 					write_line 	= line.split(':')[1].strip()
@@ -66,7 +66,7 @@ class Module(Templates):
 		f.close()
 
 	def find_pass(self, user):
-		for line in ReadFromFile(FullPath(self.cracked)):
+		for line in read_from_file(full_path(write_to_file.cracked)):
 			if line.startswith(user):
 				return line.split(':', 2)[1]
 		return None

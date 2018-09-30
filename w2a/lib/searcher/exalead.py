@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from w2a.lib.searcher.Searcher import Searcher
+from w2a.lib.searcher.search_engine import SearchEngine
 
-class exalead(Searcher):
+class exalead(SearchEngine):
 	"""docstring for exalead"""
 
 	def __init__(self, keyworld, limit, delay):

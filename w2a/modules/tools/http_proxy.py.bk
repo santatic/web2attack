@@ -5,7 +5,7 @@
 
 from w2a.core.templates import Templates
 from w2a.config import CONFIG
-from w2a.lib.file import FullPath, ReadFromFile
+from w2a.lib.file import full_path, read_from_file
 
 
 from hashlib import md5
@@ -20,8 +20,8 @@ class Module(Templates):
 		self.description 	= 'Http Proxy with php host'
 		self.detailed_description	= 'This module retreives create virtual http proxy with php host'
 		############################
-		self.options.addPath('FILE', 'file to sort', False)
-		self.options.addPath('DIRECTORY', 'dir to sort', default = CONFIG.TMP_PATH)
+		self.options.add_path('FILE', 'file to sort', False)
+		self.options.add_path('DIRECTORY', 'dir to sort', default = CONFIG.TMP_PATH)
 		############################
 
 	def run(self, frmwk, args):

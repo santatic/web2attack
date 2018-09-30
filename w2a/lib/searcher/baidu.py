@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from w2a.lib.searcher.Searcher import Searcher
+from w2a.lib.searcher.search_engine import SearchEngine
 
 from urllib.parse import unquote
 
-class baidu(Searcher):
+class baidu(SearchEngine):
 	"""docstring for google"""
 	def __init__(self, keyworld, limit, delay):
 		super().__init__('http://www.baidu.com/', keyworld, limit, delay)

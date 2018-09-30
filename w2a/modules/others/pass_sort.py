@@ -3,7 +3,7 @@
 #  Copyright 2012 Kid :">
 
 from w2a.core.templates import Templates
-from w2a.lib.file import FullPath, ReadFromFile, WriteToFile, ListDir
+from w2a.lib.file import full_path, read_from_file, write_to_file, list_dir
 from w2a.config import CONFIG
 
 class Module(Templates):
@@ -14,16 +14,16 @@ class Module(Templates):
 		self.description 	= 'sort password list'
 		self.detailed_description	= 'This module retreives sort all password list'
 		
-		self.options.addPath('INPUT', 'Path to password list directory')
-		self.options.addPath('OUTPUT', 'Output directory')
+		self.options.add_path('INPUT', 'Path to password list directory')
+		self.options.add_path('OUTPUT', 'Output directory')
 
 	def run(self, frmwk, args):
 		passlist	= {}
-		paths	= ListDir(self.options['INPUT'])
+		paths	= list_dir(self.options['INPUT'])
 		for path in paths:
 			p = self.options['INPUT'] + '/' + path
 			frmwk.print_status('Sorting: ' + p)
-			data = ReadFromFile(FullPath(p))
+			data = read_from_file(full_path(p))
 			if p.find('withcount') == -1:
 				for d in data:
 					d = d.strip()
@@ -44,5 +44,5 @@ class Module(Templates):
 		output = sorted([(v,k) for (k,v) in passlist.items()], reverse=True)
 		outpath = self.options['OUTPUT'] + '/out.lst'
 		frmwk.print_success('Output: ' + outpath)
-		WriteToFile(FullPath(outpath), (o[1] for o in output))
-		WriteToFile(FullPath(outpath+ '.withcount'), (str(o[0])+' '+o[1] for o in output))
+		write_to_file(full_path(outpath), (o[1] for o in output))
+		write_to_file(full_path(outpath+ '.withcount'), (str(o[0])+' '+o[1] for o in output))

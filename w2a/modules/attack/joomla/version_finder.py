@@ -2,7 +2,7 @@
 #  Copyright 2012 Kid :">
 
 from w2a.core.templates import Templates
-from w2a.lib.net.http import HTTP
+# from w2a.lib.net.http import HTTP
 
 from re import search
 
@@ -14,7 +14,7 @@ class Module(Templates):
 		self.description 	= 'Brute joomla administrator account'
 		self.detailed_description	= 'This module retreives connect with dictionary username and password'
 		#######################
-		self.options.addString('URL', 'Link home page')
+		self.options.add_string('URL', 'Link home page')
 
 	def run(self, frmwk, args):
 		self.version	= None

@@ -5,7 +5,7 @@
 from w2a.core.templates import Templates
 from w2a.config import CONFIG
 from w2a.lib.thread import Thread
-from w2a.lib.file import FullPath, ReadFromFile
+from w2a.lib.file import full_path, read_from_file
 from w2a.lib.net import socks
 
 from threading import Lock
@@ -21,14 +21,14 @@ class Module(Templates):
 		self.description 	= 'Automatic check open ports'
 		self.detailed_description	= 'This module retreives check open ports'
 		########
-		self.options.addString('HOSTS', 'Range of ip')
-		self.options.addString('SERVICE', 'Service:Port hydra brute', default = 'smb:445')
-		self.options.addPath('ACCOUNT', 'File containing username:password list')
-		self.options.addInteger('TIMEOUT', 'Timeout connect', default = 16)
-		self.options.addInteger('THREADS', 'Threads numbers of scanner', default = 8)
+		self.options.add_string('HOSTS', 'Range of ip')
+		self.options.add_string('SERVICE', 'Service:Port hydra brute', default = 'smb:445')
+		self.options.add_path('ACCOUNT', 'File containing username:password list')
+		self.options.add_integer('TIMEOUT', 'Timeout connect', default = 16)
+		self.options.add_integer('THREADS', 'Threads numbers of scanner', default = 8)
 		########
-		self.advanced_options.addString('HYDRAPOPEN', 'Hydra popen string', default = 'proxychains4 -f ~/.proxychains/pivoting.conf hydra')
-		self.advanced_options.addString('DELAY', 'Delay of 1 connect/1 login', default =60)
+		self.advanced_options.add_string('HYDRAPOPEN', 'Hydra popen string', default = 'proxychains4 -f ~/.proxychains/pivoting.conf hydra')
+		self.advanced_options.add_string('DELAY', 'Delay of 1 connect/1 login', default =60)
 	
 	def run(self, frmwk, args):
 		
@@ -47,7 +47,7 @@ class Module(Templates):
 		self.thread_lock	= Lock()
 		self.thread_flag	= True
 		self.restore_file	= 'hydra.restore'
-		self.accounts 		= FullPath(self.options['ACCOUNT'])
+		self.accounts 		= full_path(self.options['ACCOUNT'])
 		try:
 			for host in self.options['HOSTS'].split(','):
 				if host.find('-') != -1:

@@ -14,7 +14,7 @@ class Module(Templates):
 		self.description 	= 'Get Basic Meter Information By Reading Tables'
 		self.detailed_description	= 'This module retreives some basic meter information and displays it in a human-readable way.'
 		
-		self.options.addString('HOST', 'domain/ip')
+		self.options.add_string('HOST', 'domain/ip')
 
 	def run(self, frmwk, args):
 		print(gethostbyname(self.options['HOST']))

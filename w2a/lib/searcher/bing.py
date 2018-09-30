@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from w2a.lib.searcher.Searcher import Searcher
+from w2a.lib.searcher.search_engine import SearchEngine
 
-class bing(Searcher):
+class bing(SearchEngine):
 	"""docstring for bing"""
 
 	def __init__(self, keyworld, limit, delay):

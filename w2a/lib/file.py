@@ -5,12 +5,12 @@ from os import listdir
 from os.path import isfile, abspath, isdir, basename
 from w2a.core.printer import print_error
 
-def FullPath(f, strip = True):
+def full_path(f, strip = True):
 	if strip:
 		f = f.strip()
 	return abspath(f)
 
-def ReadFromFile(filename, strip = True):
+def read_from_file(filename, strip = True):
 	if isfile(filename):
 		# result = []
 		with open(filename, encoding='utf-8', mode='r') as f:
@@ -30,7 +30,7 @@ def ReadFromFile(filename, strip = True):
 	else:
 		print_error("File %s do not exist!\n" % filename)
 
-def WriteToFile(filename , data =[], strip = True):
+def write_to_file(filename , data =[], strip = True):
 	try:
 		f = open(filename , encoding='utf-8', mode='w+')
 	except Exception as e:
@@ -47,7 +47,7 @@ def WriteToFile(filename , data =[], strip = True):
 	finally:
 		f.close()
 
-def AppendFile(filename , data =[], strip = True):
+def append_file(filename , data =[], strip = True):
 	try:
 		f = open(filename , "a+")
 	except Exception as e:
@@ -65,15 +65,15 @@ def AppendFile(filename , data =[], strip = True):
 	finally:
 		f.close()
 
-def ListDir(basepath = ''):
+def list_dir(basepath = ''):
 	files	= []
 	dirs	= []
 	path	= ''
 	if basepath != '':
 		basepath = basepath + '/'
 	while True:
-		if isdir(FullPath(basepath + path)):
-			lfs = listdir(FullPath(basepath + path))
+		if isdir(full_path(basepath + path)):
+			lfs = listdir(full_path(basepath + path))
 			for f in lfs:
 				if not basename(f).startswith('__'):
 					f = path + f

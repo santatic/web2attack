@@ -9,7 +9,7 @@ from email import encoders
 from os.path import basename
 from time import sleep
 
-from w2a.lib.file import FullPath, ReadFromFile
+from w2a.lib.file import full_path, read_from_file
 from w2a.core.templates import Templates
 from w2a.config import CONFIG
 
@@ -21,20 +21,20 @@ class Module(Templates):
 		self.description 	= 'Auto send email'
 		self.detailed_description	= 'This module retreives send email to many people'
 		
-		self.options.addString('SENDER', 'Fake name to hide sender', default = '')
-		self.options.addString('TO', 'list email (support : email1,email2 ...)', False)
-		self.options.addPath('TOLIST', 'list email from file', False)
-		self.options.addString('SUBJECT', 'Subject of email', default = 'Yêu cầu báo cáo tình hình KTXH 6 tháng cuối năm!')
-		self.options.addString('CONTENT', 'Text of content email', default = 'Dear anh/chị !<br/><br/>Em gởi anh/chị  bản kế hoach cuối năm bên mình, anh/chị xem qua rồi gởi Feedback lại cho em để em còn tổng hợp gởi sếp !<br/><br/>Thu Trang !')
-		self.options.addPath('ATTACHFILE', 'Path to file', False)
-		self.options.addBoolean('TLS', 'TLS support', default = False)
-		self.options.addInteger('DELAY', 'Delay time for a request', default = 1)
-		self.options.addInteger('COUNT', 'count email/request', default = 20)
+		self.options.add_string('SENDER', 'Fake name to hide sender', default = '')
+		self.options.add_string('TO', 'list email (support : email1,email2 ...)', False)
+		self.options.add_path('TOLIST', 'list email from file', False)
+		self.options.add_string('SUBJECT', 'Subject of email', default = 'Yêu cầu báo cáo tình hình KTXH 6 tháng cuối năm!')
+		self.options.add_string('CONTENT', 'Text of content email', default = 'Dear anh/chị !<br/><br/>Em gởi anh/chị  bản kế hoach cuối năm bên mình, anh/chị xem qua rồi gởi Feedback lại cho em để em còn tổng hợp gởi sếp !<br/><br/>Thu Trang !')
+		self.options.add_path('ATTACHFILE', 'Path to file', False)
+		self.options.add_boolean('TLS', 'TLS support', default = False)
+		self.options.add_integer('DELAY', 'Delay time for a request', default = 1)
+		self.options.add_integer('COUNT', 'count email/request', default = 20)
 
-		self.advanced_options.addString('SMTPSERVER', 'ip/domain of smtp server (fake email: 127.0.0.1)', default = '127.0.0.1')
-		self.advanced_options.addString('USERNAME', 'smtp username', default = '')
-		self.advanced_options.addString('PASSWORD', 'smtp password', default = '')
-		self.advanced_options.addBoolean('BCC', 'send email via bcc(faster)', default = False)
+		self.advanced_options.add_string('SMTPSERVER', 'ip/domain of smtp server (fake email: 127.0.0.1)', default = '127.0.0.1')
+		self.advanced_options.add_string('USERNAME', 'smtp username', default = '')
+		self.advanced_options.add_string('PASSWORD', 'smtp password', default = '')
+		self.advanced_options.add_boolean('BCC', 'send email via bcc(faster)', default = False)
 	
 	def run(self, frmwk, args):
 		server 	= self.advanced_options['SMTPSERVER']
@@ -52,7 +52,7 @@ class Module(Templates):
 		if self.options['TO']:
 			to		= self.options['TO'].split(',')
 		elif self.options['TOLIST']:
-			to = ReadFromFile(FullPath(self.options['TOLIST']))
+			to = read_from_file(full_path(self.options['TOLIST']))
 		else:
 			frmwk.print_error('Nothing to do! set TO/TOLIST value (advanced options)')
 			return

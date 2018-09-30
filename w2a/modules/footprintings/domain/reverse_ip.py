@@ -1,13 +1,13 @@
 #  modules/reverse_ip.py
 #
-#  Copyright 2012 Kid :">
+#  Copyright 2012 VinaKid :">
 
 from w2a.core.templates import Templates
-from w2a.lib.net.http import HTTP
+# from w2a.lib.net.http import HTTP
 from w2a.config import CONFIG
 from w2a.lib.thread import Thread
 from w2a.lib.dbconnect import IPInSerter, getDomain, getIP
-from w2a.lib.file import FullPath, ReadFromFile, AppendFile
+from w2a.lib.file import full_path, read_from_file, append_file
 
 from re import findall,search
 from urllib.parse import urlencode
@@ -19,7 +19,7 @@ class Module(Templates):
 		super().__init__(*args, **kwargs)
 		############################
 		self.version		= 1
-		self.author			= [ 'Kid' ]
+		self.author			= [ 'VinaKid' ]
 		self.description 	= 'Get all domain in IP'
 		self.detailed_description	= 	'Module dùng để reverse ip từ 1 domain/ip\n'+\
 										'- Có thể set nhiều domain/ip ngăn cách bằng dấu phẩy\n'+\
@@ -28,12 +28,12 @@ class Module(Templates):
 										'- Option RHOSTLIST là reverse ip từ file chứa list domain/ip\n'+\
 										'nếu không set RHOST thì sẽ get domain/list tù RHOSTLIST\n'
 		############################
-		self.options.addString('RHOST', 'IP/Domain to reverse(support : ip1,ip2...)', False)
-		self.options.addBoolean('CHECK', 'check domain is in this IP ', default = True)
-		self.options.addInteger('THREADS', 'thread check domain', default = 10)
+		self.options.add_string('RHOST', 'IP/Domain to reverse(support : ip1,ip2...)', False)
+		self.options.add_boolean('CHECK', 'check domain is in this IP ', default = True)
+		self.options.add_integer('THREADS', 'thread check domain', default = 10)
 		############################
-		self.advanced_options.addPath('RHOSTLIST', 'Path to domain list', default = CONFIG.DATA_PATH + '/victim.lst')
-		self.advanced_options.addPath('OUTPUT', 'Output directory', default = CONFIG.TMP_PATH + '/reverseip/')
+		self.advanced_options.add_path('RHOSTLIST', 'Path to domain list', default = CONFIG.DATA_PATH + '/victim.lst')
+		self.advanced_options.add_path('OUTPUT', 'Output directory', default = CONFIG.TMP_PATH + '/reverseip/')
 		############################
 		self.fmt_string	= "Site: {0:<30} {1}"
 		self.SEARCHERS	= [
@@ -102,12 +102,12 @@ class Module(Templates):
 	def run(self, frmwk, args):
 		self.frmwk	= frmwk
 		hosts		= []
-		hosts		= self.options['RHOST'].split(',') if self.options['RHOST'] else ReadFromFile(FullPath(self.advanced_options['HOSTLIST']))
+		hosts		= self.options['RHOST'].split(',') if self.options['RHOST'] else read_from_file(full_path(self.advanced_options['HOSTLIST']))
 
 		for host in hosts:
 			if self.worker(host.strip()) and self.advanced_options['OUTPUT']:
-				output	= FullPath(self.advanced_options['OUTPUT'] + '/' + self.ip + '.txt')
-				AppendFile(output, self.domains)
+				output	= full_path(self.advanced_options['OUTPUT'] + '/' + self.ip + '.txt')
+				append_file(output, self.domains)
 				self.frmwk.print_line()
 				self.frmwk.print_success('Saved: ' + output)
 

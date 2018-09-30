@@ -29,10 +29,10 @@ class Module(Templates):
 		self.description 	= 'Automatic check open ports'
 		self.detailed_description	= 'This module retreives check open ports'
 		
-		self.options.addString('HOSTS', 'Range of ip')
-		self.options.addString('PORTS', 'List/Range of port', False, default = '21,22,25,80,445,1433,3306,3389,4899,8080,1521')
-		self.options.addInteger('TIMEOUT', 'Timout connect', default = '8')
-		self.options.addInteger('THREADS', 'Threads numbers of scanner', default = 10)
+		self.options.add_string('HOSTS', 'Range of ip')
+		self.options.add_string('PORTS', 'List/Range of port', False, default = '21,22,25,80,445,1433,3306,3389,4899,8080,1521')
+		self.options.add_integer('TIMEOUT', 'Timout connect', default = '8')
+		self.options.add_integer('THREADS', 'Threads numbers of scanner', default = 10)
 	
 	def run(self, frmwk, args):
 		self.frmwk 			= frmwk

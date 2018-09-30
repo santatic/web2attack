@@ -5,7 +5,7 @@
 
 from w2a.core.templates import Templates
 from w2a.lib.thread import Thread
-from w2a.lib.net.http import HTTP
+# from w2a.lib.net.http import HTTP
 from w2a.lib import socket
 from w2a.config import CONFIG
 
@@ -24,11 +24,11 @@ class Module(Templates):
 		self.description 	= 'Http Proxy with php host'
 		self.detailed_description	= 'This module retreives create virtual http proxy with php host'
 		############################
-		self.options.addBoolean('ENCRYPT', 'Encrypt data ?', default = True)
+		self.options.add_boolean('ENCRYPT', 'Encrypt data ?', default = True)
 		
 		############################
-		self.advanced_options.addInteger('SERVERPORT', 'Port of Proxy Server', default = 9000)
-		self.advanced_options.addInteger('TIMEOUT', 'Time out request', default = CONFIG.TIME_OUT)
+		self.advanced_options.add_integer('SERVERPORT', 'Port of Proxy Server', default = 9000)
+		self.advanced_options.add_integer('TIMEOUT', 'Time out request', default = CONFIG.TIME_OUT)
 
 	def run(self, frmwk, args):
 		self.frmwk 			= frmwk
@@ -64,7 +64,8 @@ class Module(Templates):
 		################### CONNET TUNNEL #####################
 		### choin and connect to tunnel
 		c_tunnel	= self.choin_tunnel()	# chon 1 tunnel
-		t_conn		= HTTP(c_tunnel[0], timeout = self.connect_timout)
+		t_conn		= None
+		# t_conn		= HTTP(c_tunnel[0], timeout = self.connect_timout)
 		
 		### check tunnel is open
 		if not t_conn:

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from w2a.lib.searcher.Searcher import Searcher
+from w2a.lib.searcher.search_engine import SearchEngine
 
-class yahoo(Searcher):
+class yahoo(SearchEngine):
 	"""docstring for yahoo"""
 	def __init__(self, keyworld, limit, delay):
 		super().__init__('http://search.yahoo.com/', keyworld, limit, delay)

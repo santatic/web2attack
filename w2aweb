@@ -6,7 +6,7 @@ from json import dumps
 from socket import gethostbyname
 from base64 import b64encode, b64decode
 
-from w2a.lib.file import FullPath
+from w2a.lib.file import full_path
 from w2a.core.core import Framework
 from w2a.lib.dbconnect import DBConnect, getDomain, getUser , getIP
 from w2a.config import CONFIG
@@ -15,7 +15,7 @@ from w2a.lib.ip import IP
 
 from web.lib.login import Md5, RandChar, CheckUser
 ###############################
-sys.path.append(FullPath('web'))
+sys.path.append(full_path('web'))
 ###############################
 import cherrypy
 from cherrypy.lib import static
@@ -30,9 +30,9 @@ class W2AGUI:
 	_cp_config = {	
 					'tools.sessions.on': True,
 					'tools.sessions.timeout': 7200,
-					'tools.staticdir.root' : FullPath(''),
-					'error_page.404' : FullPath('web/error/404.html'),
-					'error_page.500' : FullPath('web/error/500.html'),
+					'tools.staticdir.root' : full_path(''),
+					'error_page.404' : full_path('web/error/404.html'),
+					'error_page.500' : full_path('web/error/500.html'),
 				}
 	def __init__(self):
 		self.frmwk 			= Framework()
@@ -60,9 +60,9 @@ class W2AGUI:
 		if not self.dbconnect:
 			return('database error')
 		if self.checklogin():
-			return static.serve_file(FullPath('web/index.html'))
+			return static.serve_file(full_path('web/index.html'))
 		else:
-			return static.serve_file(FullPath('web/login.html'))
+			return static.serve_file(full_path('web/login.html'))
 	index.exposed = True
 	
 	# def get0utPut(self):
@@ -79,14 +79,14 @@ class W2AGUI:
 				if Md5(Md5(password + b64decode(row[2].encode('ascii')).decode('utf-8'))) == row[1]:
 					cherrypy.session['login']	= True
 					cherrypy.session['user']	= username
-					return static.serve_file(FullPath('web/index.html'))
+					return static.serve_file(full_path('web/index.html'))
 			cursor.close()
-		return static.serve_file(FullPath('web/login.html'))
+		return static.serve_file(full_path('web/login.html'))
 	login.exposed = True
 	
 	def logout(self):
 		cherrypy.session.delete()
-		return static.serve_file(FullPath('web/login.html'))
+		return static.serve_file(full_path('web/login.html'))
 	logout.exposed = True
 
 	# def registry(self, username = '', password = ''):
@@ -105,11 +105,11 @@ class W2AGUI:
 	# 			cursor.execute(query)
 	# 			self.db.commit()
 	# 		cursor.close()
-	# 	return static.serve_file(FullPath('web/login.html'))
+	# 	return static.serve_file(full_path('web/login.html'))
 	# registry.exposed = True
 
 	def reverseip(self, ip, type = 'new'):
-		#return static.serve_file(FullPath('web/content/test.json'))
+		#return static.serve_file(full_path('web/content/test.json'))
 		if self.checklogin():
 			domains	= []
 			key		= True
@@ -130,17 +130,17 @@ class W2AGUI:
 
 			if key:
 				module 	= reverse_ip.Module()
-				module.options.addString('RHOST', 'IP/Domain to reverse', default = ip)
-				module.options.addBoolean('CHECK', 'check domain is in this IP ', default = True)
-				module.options.addBoolean('OUTPUTFILE', 'check if want to save list of domain', default = False)
-				module.options.addInteger('THREADS', 'thread check domain', default = 10)
+				module.options.add_string('RHOST', 'IP/Domain to reverse', default = ip)
+				module.options.add_boolean('CHECK', 'check domain is in this IP ', default = True)
+				module.options.add_boolean('OUTPUTFILE', 'check if want to save list of domain', default = False)
+				module.options.add_integer('THREADS', 'thread check domain', default = 10)
 
 				module.run(self.frmwk, None)
 				domains = module.domains
 			domains	= datagirdConvert(domains)
 			return domains
 		else:
-			return static.serve_file(FullPath('web/login.html'))
+			return static.serve_file(full_path('web/login.html'))
 	reverseip.exposed = True
 
 	def harvester(self, domain ,type = 'new'):
@@ -161,12 +161,12 @@ class W2AGUI:
 
 			if key:
 				module 	= harvester.Module()
-				module.options.addString('DOMAIN', 'Domain/Company', default = domain)
-				module.options.addString('SEARCHER', 'select search enginee', default = 'all')
-				module.options.addInteger('LIMIT', 'set limit search', default = 1000)
-				module.options.addString('TYPE', 'type scan', default = 'slow')
-				module.options.addInteger('DELAY', 'delay time', default = 1)
-				module.options.addBoolean('MULTITHREADS', 'check domain', False)
+				module.options.add_string('DOMAIN', 'Domain/Company', default = domain)
+				module.options.add_string('SEARCHER', 'select search enginee', default = 'all')
+				module.options.add_integer('LIMIT', 'set limit search', default = 1000)
+				module.options.add_string('TYPE', 'type scan', default = 'slow')
+				module.options.add_integer('DELAY', 'delay time', default = 1)
+				module.options.add_boolean('MULTITHREADS', 'check domain', False)
 				module.run(self.frmwk, None)
 				domains = module.subs
 			ip	= IP()
@@ -177,8 +177,8 @@ class W2AGUI:
 			print(domains)
 			return datagirdConvert(domains)
 		else:
-			return static.serve_file(FullPath('web/login.html'))
+			return static.serve_file(full_path('web/login.html'))
 	harvester.exposed = True
 ##############################################################
 if __name__ == '__main__':
-		cherrypy.quickstart(W2AGUI(), config = FullPath('web/w2a.conf'))
+		cherrypy.quickstart(W2AGUI(), config = full_path('web/w2a.conf'))

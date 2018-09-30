@@ -1,9 +1,9 @@
 #  Copyright 2012 Kid :">
 
 from w2a.core.templates import Templates
-from w2a.lib.net.http import HTTP
+# from w2a.lib.net.http import HTTP
 from w2a.config import CONFIG
-from w2a.lib.file import FullPath, ReadFromFile
+from w2a.lib.file import full_path, read_from_file
 from w2a.lib.thread import Thread
 
 from base64 import b64encode
@@ -23,21 +23,21 @@ class Module(Templates):
 		self.userarg		= '__USER__'
 		self.passarg		= '__PASS__'
 		#########################################
-		self.options.addString('URL', 'Link login')
-		self.options.addString('DATA', 'Date with POST method', False)
-		self.options.addString('USERNAME', 'Account login', False)
-		self.options.addString('PASSWORD', 'Password login', False)
-		self.options.addPath('USERLIST', 'File containing username list', default = CONFIG.DATA_PATH + '/brute/username.lst')
-		self.options.addPath('PASSLIST', 'File containing password list', default = CONFIG.DATA_PATH + '/brute/pass.vn')
-		self.options.addString('CHECKTYPE', 'Type of checker success login', default = 'errorstr', complete = ['errorstr', 'successstr', 'status', 'author','lenght'])
-		self.options.addString('TOKEN', 'Error/Success string', False)
-		self.options.addInteger('THREADS', 'Multithreading', default = 10)
-		self.options.addBoolean('VERBOSE', 'Verbose', default = True)
+		self.options.add_string('URL', 'Link login')
+		self.options.add_string('DATA', 'Date with POST method', False)
+		self.options.add_string('USERNAME', 'Account login', False)
+		self.options.add_string('PASSWORD', 'Password login', False)
+		self.options.add_path('USERLIST', 'File containing username list', default = CONFIG.DATA_PATH + '/brute/username.lst')
+		self.options.add_path('PASSLIST', 'File containing password list', default = CONFIG.DATA_PATH + '/brute/pass.vn')
+		self.options.add_string('CHECKTYPE', 'Type of checker success login', default = 'errorstr', complete = ['errorstr', 'successstr', 'status', 'author','lenght'])
+		self.options.add_string('TOKEN', 'Error/Success string', False)
+		self.options.add_integer('THREADS', 'Multithreading', default = 10)
+		self.options.add_boolean('VERBOSE', 'Verbose', default = True)
 
-		self.advanced_options.addString('COOKIE', 'Cookie', False)
-		self.advanced_options.addInteger('DELAY', 'Delay time if thread = 1', default = 1)
-		self.advanced_options.addInteger('TIMEOUT', 'Time out request', default = CONFIG.TIME_OUT)
-		self.advanced_options.addBoolean('STOP', 'Stop scanning host after first valid username/password found', default = True)
+		self.advanced_options.add_string('COOKIE', 'Cookie', False)
+		self.advanced_options.add_integer('DELAY', 'Delay time if thread = 1', default = 1)
+		self.advanced_options.add_integer('TIMEOUT', 'Time out request', default = CONFIG.TIME_OUT)
+		self.advanced_options.add_boolean('STOP', 'Stop scanning host after first valid username/password found', default = True)
 		####
 		self.initcallbacker	= None
 
@@ -56,12 +56,12 @@ class Module(Templates):
 		if self.options['USERNAME']:
 			self.userlist	= self.options['USERNAME'].split(',')
 		else:
-			self.userlist 	= ReadFromFile(FullPath(self.options['USERLIST']))
+			self.userlist 	= read_from_file(full_path(self.options['USERLIST']))
 
 		if self.options['PASSWORD']:
 			self.passlist	= self.options['PASSWORD'].split(',')
 		else:
-			for a in ReadFromFile(FullPath(self.options['PASSLIST'])):
+			for a in read_from_file(full_path(self.options['PASSLIST'])):
 				self.passlist.append(a)
 
 		self.lenuser	= len(self.userlist)

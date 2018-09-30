@@ -3,9 +3,9 @@
 #  Copyright 2012 Kid :">
 
 from w2a.core.templates import Templates
-from w2a.lib.net.http import HTTP
+# from w2a.lib.net.http import HTTP
 from w2a.config import CONFIG
-from w2a.lib.file import FullPath, ReadFromFile
+from w2a.lib.file import full_path, read_from_file
 from w2a.lib.thread import Thread
 
 from copy import deepcopy
@@ -19,23 +19,23 @@ class Module(Templates):
 		self.description 	= 'Automatic check file exist'
 		self.detailed_description	= 'This module retreives check file exist'
 		
-		self.options.addString('URL', 'Path scan')
-		self.options.addString('EXTENSION', 'Extension of filescan(support : ext1,ext2...)', default = 'php')
-		self.options.addString('TYPE', 'Type of checker', default = 'location', complete = ['location', 'status', 'lenght', 'auto'])
-		self.options.addInteger('THREADS', 'Multithreading', default = 10)
-		self.options.addBoolean('STOP', 'Stop if found', default = False)
-		self.options.addPath('DIRLIST', 'File containing directory list', False, default = CONFIG.DATA_PATH + '/dict/vuln.dir')
-		self.options.addPath('FILELIST', 'File containing file list', default = CONFIG.DATA_PATH + '/dict/vuln.file')
+		self.options.add_string('URL', 'Path scan')
+		self.options.add_string('EXTENSION', 'Extension of filescan(support : ext1,ext2...)', default = 'php')
+		self.options.add_string('TYPE', 'Type of checker', default = 'location', complete = ['location', 'status', 'lenght', 'auto'])
+		self.options.add_integer('THREADS', 'Multithreading', default = 10)
+		self.options.add_boolean('STOP', 'Stop if found', default = False)
+		self.options.add_path('DIRLIST', 'File containing directory list', False, default = CONFIG.DATA_PATH + '/dict/vuln.dir')
+		self.options.add_path('FILELIST', 'File containing file list', default = CONFIG.DATA_PATH + '/dict/vuln.file')
 
-		self.advanced_options.addBoolean('INTO', 'Continue scan file into dir if found status != 403', default = True)
-		self.advanced_options.addInteger('OFFSET', 'Offset different of type lenght', default = 100)
-		self.advanced_options.addInteger('TIMEOUT', 'Time out request', default = CONFIG.TIME_OUT)
-		self.advanced_options.addString('COOKIE', 'Cookie', False)
+		self.advanced_options.add_boolean('INTO', 'Continue scan file into dir if found status != 403', default = True)
+		self.advanced_options.add_integer('OFFSET', 'Offset different of type lenght', default = 100)
+		self.advanced_options.add_integer('TIMEOUT', 'Time out request', default = CONFIG.TIME_OUT)
+		self.advanced_options.add_string('COOKIE', 'Cookie', False)
 	
 	def run(self, frmwk, args):
 		self.frmwk		= frmwk
-		self.dirs		= ReadFromFile(FullPath(self.options['DIRLIST'])) if self.options['DIRLIST'] else []
-		self.files		= ReadFromFile(FullPath(self.options['FILELIST'])) if self.options['FILELIST'] else []
+		self.dirs		= read_from_file(full_path(self.options['DIRLIST'])) if self.options['DIRLIST'] else []
+		self.files		= read_from_file(full_path(self.options['FILELIST'])) if self.options['FILELIST'] else []
 		self.url		= self.options['URL'] if self.options['URL'].endswith('/') else self.options['URL'] + '/'
 		self.type		= self.options['TYPE']
 		self.thread		= self.options['THREADS']
